@@ -13,14 +13,14 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="font-sans grid grid-rows-[auto_1fr_auto] min-h-svh text-zinc-800">
-        <header className=" p-4 border-b border-b-zinc-300">
+      <body className="grid min-h-svh grid-rows-[auto_1fr_auto] font-sans text-zinc-800">
+        <header className=" border-b border-b-zinc-300 p-4">
           <p>
             <Link href="/">Tailwind Color Contrast</Link>
           </p>
         </header>
-        <main className=" py-8 px-4">{children}</main>
-        <footer className="px-4 py-2 border-t border-t-zinc-300">
+        <main className=" px-4 py-8">{children}</main>
+        <footer className="border-t border-t-zinc-300 px-4 py-2">
           <p className="grid justify-center">
             <a href="https://github.com/crow-fox">
               <small className="text-sm">&copy; crow-fox</small>
