@@ -94,3 +94,7 @@ export function isTailwindColorName(name: unknown): name is TailwindColorName {
   }
   return false;
 }
+
+export function getTailwindColorGrades(colors: DefaultColors) {
+  return getObjectKeys(colors.amber);
+}
