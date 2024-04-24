@@ -5,14 +5,15 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "serve out/",
     "lint": "next lint",
     "format": "prettier --write ."
   },
   "dependencies": {
+    "next": "14.2.2",
     "react": "^18",
     "react-dom": "^18",
-    "next": "14.2.2"
+    "serve": "^14.2.2"
   },
   "devDependencies": {
     "@types/node": "^20",
