@@ -77,3 +77,20 @@ export function isTailwindSingleColorName(
   }
   return false;
 }
+
+const tailwindColorNameSchema = union(
+  getObjectKeys({
+    ...getTailwindColors(getTailwindThemeColors()).graded,
+    ...getTailwindColors(getTailwindThemeColors()).single,
+  }).map((color) => literal(color)),
+);
+
+type TailwindColorName = Output<typeof tailwindColorNameSchema>;
+
+export function isTailwindColorName(name: unknown): name is TailwindColorName {
+  const result = safeParse(tailwindColorNameSchema, name);
+  if (result.success) {
+    return true;
+  }
+  return false;
+}
