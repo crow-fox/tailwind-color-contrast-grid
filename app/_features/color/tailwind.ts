@@ -98,3 +98,21 @@ export function isTailwindColorName(name: unknown): name is TailwindColorName {
 export function getTailwindColorGrades(colors: DefaultColors) {
   return getObjectKeys(colors.amber);
 }
+
+const tailwindColorGradeSchema = union(
+  getTailwindColorGrades(getTailwindThemeColors()).map((grade) =>
+    literal(grade),
+  ),
+);
+
+export type TailwindColorGrade = Output<typeof tailwindColorGradeSchema>;
+
+export function isTailwindColorGrade(
+  grade: unknown,
+): grade is TailwindColorGrade {
+  const result = safeParse(tailwindColorGradeSchema, grade);
+  if (result.success) {
+    return true;
+  }
+  return false;
+}
