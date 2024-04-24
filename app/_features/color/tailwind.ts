@@ -59,3 +59,21 @@ export function isTailwindGradedColorName(
   }
   return false;
 }
+
+const tailwindSingleColorNameSchema = union(
+  getObjectKeys(getTailwindColors(getTailwindThemeColors()).single).map(
+    (color) => literal(color),
+  ),
+);
+
+type TailwindSingleColorName = Output<typeof tailwindSingleColorNameSchema>;
+
+export function isTailwindSingleColorName(
+  name: unknown,
+): name is TailwindSingleColorName {
+  const result = safeParse(tailwindSingleColorNameSchema, name);
+  if (result.success) {
+    return true;
+  }
+  return false;
+}
