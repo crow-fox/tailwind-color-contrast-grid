@@ -1,6 +1,8 @@
 import resolveConfig from "tailwindcss/resolveConfig";
 import tailwindConfig from "@/tailwind.config";
 import { DefaultColors } from "tailwindcss/types/generated/colors";
+import { Output, literal, safeParse, union } from "valibot";
+import { getObjectKeys } from "@/app/_utils/object";
 
 export function getTailwindThemeColors() {
   const { theme } = resolveConfig(tailwindConfig);
@@ -38,4 +40,22 @@ export function getTailwindColors(colors: DefaultColors) {
       black: colors.black,
     },
   } as const;
+}
+
+const tailwindGradedColorNameSchema = union(
+  getObjectKeys(getTailwindColors(getTailwindThemeColors()).graded).map(
+    (color) => literal(color),
+  ),
+);
+
+type TailwindGradedColorName = Output<typeof tailwindGradedColorNameSchema>;
+
+export function isTailwindGradedColorName(
+  name: unknown,
+): name is TailwindGradedColorName {
+  const result = safeParse(tailwindGradedColorNameSchema, name);
+  if (result.success) {
+    return true;
+  }
+  return false;
 }
