@@ -1,3 +1,12 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :focus {
+    @apply outline-none;
+  }
+  :focus-visible {
+    @apply outline outline-black;
+  }
+}
