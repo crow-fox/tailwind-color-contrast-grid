@@ -1,10 +1,8 @@
-import resolveConfig from "tailwindcss/resolveConfig";
+import { getObjectKeys } from "@/app/_utils/object";
 import tailwindConfig from "@/tailwind.config";
+import resolveConfig from "tailwindcss/resolveConfig";
 import { DefaultColors } from "tailwindcss/types/generated/colors";
 import { Output, literal, safeParse, union } from "valibot";
-import { getObjectKeys } from "@/app/_utils/object";
-import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
-import { useMemo } from "react";
 
 export function getTailwindThemeColors() {
   const { theme } = resolveConfig(tailwindConfig);
@@ -50,7 +48,9 @@ const tailwindGradedColorNameSchema = union(
   ),
 );
 
-type TailwindGradedColorName = Output<typeof tailwindGradedColorNameSchema>;
+export type TailwindGradedColorName = Output<
+  typeof tailwindGradedColorNameSchema
+>;
 
 export function isTailwindGradedColorName(
   name: unknown,
@@ -68,7 +68,9 @@ const tailwindSingleColorNameSchema = union(
   ),
 );
 
-type TailwindSingleColorName = Output<typeof tailwindSingleColorNameSchema>;
+export type TailwindSingleColorName = Output<
+  typeof tailwindSingleColorNameSchema
+>;
 
 export function isTailwindSingleColorName(
   name: unknown,
