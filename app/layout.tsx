@@ -3,7 +3,7 @@ import "./globals.css";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Tailwind Color Contrast",
+  title: "Tailwind Color Contrast Grid",
 };
 
 export default function RootLayout({
@@ -13,10 +13,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="grid min-h-svh grid-rows-[auto_1fr_auto] font-sans text-zinc-800">
+      <body className="grid min-h-svh grid-rows-[auto_1fr_auto] font-mono text-zinc-800">
         <header className=" border-b border-b-zinc-300 p-4">
           <p>
-            <Link href="/">Tailwind Color Contrast</Link>
+            <Link href="/">Tailwind Color Contrast Grid</Link>
           </p>
         </header>
         <main className=" px-4 py-8">{children}</main>
