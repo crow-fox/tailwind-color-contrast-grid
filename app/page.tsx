@@ -1,9 +1,17 @@
-import Image from "next/image";
+import { ColorGridTable } from "@/app/_features/color/ColorGridTable";
+import { ColorController } from "@/app/_features/color/ColorController";
+import { Suspense } from "react";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Tailwind Color Contrast</h1>
-    </main>
+    <div className="grid  justify-center  gap-y-8">
+      <div className=" grid gap-y-2">
+        <h1 className=" text-lg font-bold">TailwindCSSカラーパレット</h1>
+        <Suspense>
+          <ColorController />
+        </Suspense>
+      </div>
+      <ColorGridTable />
+    </div>
   );
 }
