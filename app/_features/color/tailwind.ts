@@ -3,6 +3,8 @@ import tailwindConfig from "@/tailwind.config";
 import { DefaultColors } from "tailwindcss/types/generated/colors";
 import { Output, literal, safeParse, union } from "valibot";
 import { getObjectKeys } from "@/app/_utils/object";
+import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
+import { useMemo } from "react";
 
 export function getTailwindThemeColors() {
   const { theme } = resolveConfig(tailwindConfig);
@@ -115,4 +117,61 @@ export function isTailwindColorGrade(
     return true;
   }
   return false;
+}
+
+export function findTailwindColor(color: { name: string; grade: string }):
+  | {
+      type: "notFound";
+    }
+  | {
+      type: "single";
+      color: {
+        name: TailwindSingleColorName;
+        value: string;
+      };
+    }
+  | {
+      type: "graded";
+      color: {
+        name: TailwindGradedColorName;
+        grade: TailwindColorGrade;
+        value: string;
+      };
+    } {
+  const tailwindThemeColors = getTailwindThemeColors();
+  const tailwindColors = getTailwindColors(tailwindThemeColors);
+
+  if (!isTailwindColorName(color.name)) {
+    return {
+      type: "notFound",
+    };
+  }
+
+  if (isTailwindSingleColorName(color.name)) {
+    return {
+      type: "single",
+      color: {
+        name: color.name,
+        value: tailwindColors.single[color.name],
+      },
+    };
+  }
+
+  if (isTailwindGradedColorName(color.name)) {
+    if (isTailwindColorGrade(color.grade)) {
+      return {
+        type: "graded",
+        color: {
+          name: color.name,
+          grade: color.grade,
+          value: tailwindColors.graded[color.name][color.grade],
+        },
+      };
+    }
+    return {
+      type: "notFound",
+    };
+  }
+
+  throw new Error(`Unreachable color name: ${color.name}`);
 }
