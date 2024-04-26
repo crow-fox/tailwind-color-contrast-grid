@@ -33,8 +33,10 @@ export function ColorGridItem({ color }: Props) {
       ? undefined
       : calculateColorContrast(currentColor.color.value, color.value);
 
+  // 同じカラーコードの異なる色名があるため、色名も比較する
   const isCurrent =
     currentColor.type !== "notFound" &&
+    currentColor.color.name === color.name &&
     currentColor.color.value === color.value;
 
   return (
