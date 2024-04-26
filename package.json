@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "serve out/",
-    "lint": "next lint",
+    "lint:es": "next lint",
+    "lint:markup": "markuplint app/**/*.tsx",
+    "lint": "bun run lint:es && bun run lint:markup",
     "format": "prettier --write ."
   },
   "dependencies": {
