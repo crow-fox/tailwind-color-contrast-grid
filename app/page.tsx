@@ -7,7 +7,7 @@ export default function Home() {
     <div className="grid justify-center gap-y-8">
       <div className=" grid gap-y-2">
         <h1 className=" text-lg font-bold">Tailwind Color Contrast Grid</h1>
-        <Suspense>
+        <Suspense fallback={<p>読み込み中...</p>}>
           <ColorController />
         </Suspense>
       </div>
