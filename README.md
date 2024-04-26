@@ -1,4 +1,4 @@
-# Tailwind Color Contrast
+# Tailwind Color Contrast Grid
 
 TailwindCSS でデフォルトで設定されているカラーパレットのコントラスト比を計算するツールです。
 
