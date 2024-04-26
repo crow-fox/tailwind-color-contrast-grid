@@ -1,4 +1,5 @@
 import { ColorGridItem } from "@/app/_features/color/ColorGridItem";
+import { FallbackColorGridItem } from "@/app/_features/color/FallbackColorGridItem";
 import {
   getTailwindColorGrades,
   getTailwindColors,
@@ -41,7 +42,17 @@ export function ColorGridTable() {
               </th>
               {getObjectKeys(tailwindGradedColors[name]).map((grade) => (
                 <td key={grade} className="border border-slate-200">
-                  <Suspense>
+                  <Suspense
+                    fallback={
+                      <FallbackColorGridItem
+                        color={{
+                          name,
+                          grade,
+                          value: tailwindGradedColors[name][grade],
+                        }}
+                      />
+                    }
+                  >
                     <ColorGridItem
                       color={{
                         name,
@@ -63,7 +74,16 @@ export function ColorGridTable() {
                 colSpan={tailwindColorGrades.length}
                 className="border border-slate-200"
               >
-                <Suspense>
+                <Suspense
+                  fallback={
+                    <FallbackColorGridItem
+                      color={{
+                        name,
+                        value: tailwindSingleColors[name],
+                      }}
+                    />
+                  }
+                >
                   <ColorGridItem
                     color={{
                       name,
