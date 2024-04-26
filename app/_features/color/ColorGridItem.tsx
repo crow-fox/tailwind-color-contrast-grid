@@ -40,14 +40,15 @@ export function ColorGridItem({ color }: Props) {
   return (
     <Link
       href={createColorHref(color)}
+      scroll={false}
       prefetch={false}
       className={[
-        "grid gap-y-2 p-2 hover:shadow-[inset_0_0_0_2px_black] focus-visible:shadow-[inset_0_0_0_2px_black] focus-visible:outline-none",
+        "grid gap-y-3 p-2 hover:shadow-[inset_0_0_0_2px_black] focus-visible:shadow-[inset_0_0_0_2px_black] focus-visible:outline-none",
         isCurrent ? "shadow-[inset_0_0_0_2px_black]" : "shadow-none",
       ].join(" ")}
     >
       <div
-        className="grid h-[2.5rem] w-24 place-content-center rounded-md border border-slate-100 text-xs "
+        className="grid h-10 w-20 place-content-center rounded-md border border-slate-100 text-xs/none  "
         style={{
           backgroundColor: color.value,
           color:
@@ -61,16 +62,16 @@ export function ColorGridItem({ color }: Props) {
       <p className=" text-sm/none ">{color.value}</p>
 
       {contrastResult && (
-        <div className="grid grid-cols-[auto,1fr] items-center gap-x-2">
+        <div className=" grid grid-cols-[auto_1fr] items-center gap-x-1">
           <p
             className={[
-              "rounded-md p-1 text-base/none ",
+              "rounded-md p-1 text-xs/none ",
               getLevelClassNames(contrastResult.level),
             ].join(" ")}
           >
             {contrastResult.level}
           </p>
-          <p className="text-base/none">{contrastResult.ratio}</p>
+          <p className="text-sm/none">{contrastResult.ratio}</p>
         </div>
       )}
     </Link>
