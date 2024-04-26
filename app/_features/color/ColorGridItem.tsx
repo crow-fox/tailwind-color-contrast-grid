@@ -40,6 +40,7 @@ export function ColorGridItem({ color }: Props) {
   return (
     <Link
       href={createColorHref(color)}
+      scroll={false}
       prefetch={false}
       className={[
         "grid gap-y-3 p-2 hover:shadow-[inset_0_0_0_2px_black] focus-visible:shadow-[inset_0_0_0_2px_black] focus-visible:outline-none",
