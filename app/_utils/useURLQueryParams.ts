@@ -1,5 +1,6 @@
 import { getObjectKeys } from "@/app/_utils/object";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import { useCallback } from "react";
 
 type Queries<T extends string> = Record<T, string | undefined>;
 
@@ -26,29 +27,40 @@ export function useURLQueryParams<T extends string>() {
   const router = useRouter();
   const pathname = usePathname();
 
-  function getQueryValue(querykey: T) {
-    return searchParams.get(querykey);
-  }
+  const getQueryValue = useCallback(
+    (querykey: T) => {
+      return searchParams.get(querykey);
+    },
+    [searchParams],
+  );
 
-  function updateQueries(queries: Queries<T>) {
-    const queryString = createQueryString(searchParams, queries);
-    router.push(`${pathname}?${queryString}`);
-  }
+  const updateQueries = useCallback(
+    (queries: Queries<T>) => {
+      const queryString = createQueryString(searchParams, queries);
+      router.push(`${pathname}?${queryString}`);
+    },
+    [pathname, router, searchParams],
+  );
 
-  function createHrefWithQueries(queries: Queries<T>) {
-    // <Link> の href に渡すための URL を生成
-    const queryString = createQueryString(searchParams, queries);
-    return `${pathname}?${queryString}`;
-  }
+  const createHrefWithQueries = useCallback(
+    (queries: Queries<T>) => {
+      const queryString = createQueryString(searchParams, queries);
+      return `${pathname}?${queryString}`;
+    },
+    [pathname, searchParams],
+  );
 
-  function deleteQueries(queryKeys: T[]) {
-    // 対象のクエリパラメーターのみ削除
-    const params = new URLSearchParams(searchParams);
-    for (const key of queryKeys) {
-      params.delete(key);
-    }
-    router.push(`${pathname}?${params.toString()}`);
-  }
+  const deleteQueries = useCallback(
+    (queryKeys: T[]) => {
+      // 対象のクエリパラメーターのみ削除
+      const params = new URLSearchParams(searchParams);
+      for (const key of queryKeys) {
+        params.delete(key);
+      }
+      router.push(`${pathname}?${params.toString()}`);
+    },
+    [pathname, router, searchParams],
+  );
 
   return {
     getQueryValue,
