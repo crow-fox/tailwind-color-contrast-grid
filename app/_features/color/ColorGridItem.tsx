@@ -6,8 +6,10 @@ import {
 } from "@/app/_features/color/contrast";
 import {
   TailwindColorGrade,
+  TailwindColors,
   TailwindGradedColorName,
   TailwindSingleColorName,
+  getTailwindColors,
 } from "@/app/_features/color/tailwind";
 import { useTailwindColorQuery } from "@/app/_features/color/useTailwindColorQuery";
 import Link from "next/link";
@@ -23,10 +25,12 @@ type Props = {
         name: TailwindSingleColorName;
         value: string;
       };
+  tailwindColors: TailwindColors;
 };
 
-export function ColorGridItem({ color }: Props) {
-  const { createColorHref, currentColor } = useTailwindColorQuery();
+export function ColorGridItem({ color, tailwindColors }: Props) {
+  const { createColorHref, currentColor } =
+    useTailwindColorQuery(tailwindColors);
 
   const contrastResult =
     currentColor.type === "notFound"

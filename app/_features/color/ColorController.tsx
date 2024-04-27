@@ -1,9 +1,16 @@
 "use client";
 
+import { TailwindColors } from "@/app/_features/color/tailwind";
 import { useTailwindColorQuery } from "@/app/_features/color/useTailwindColorQuery";
 
-export function ColorController() {
-  const { currentColor, resetCurrentColor } = useTailwindColorQuery();
+type Props = {
+  tailwindColors: TailwindColors;
+};
+
+export function ColorController({ tailwindColors }: Props) {
+  const { currentColor, resetCurrentColor } =
+    useTailwindColorQuery(tailwindColors);
+
   return (
     <div>
       {currentColor.type === "notFound" ? (
