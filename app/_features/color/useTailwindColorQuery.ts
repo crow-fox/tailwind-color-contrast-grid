@@ -1,5 +1,6 @@
 import {
   TailwindColorGrade,
+  TailwindColors,
   TailwindGradedColorName,
   TailwindSingleColorName,
   findTailwindColor,
@@ -7,7 +8,7 @@ import {
 import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
 import { useMemo } from "react";
 
-export function useTailwindColorQuery() {
+export function useTailwindColorQuery(tailwindColors: TailwindColors) {
   const { getQueryValue, deleteQueries, updateQueries, createHrefWithQueries } =
     useURLQueryParams<"colorname" | "colorgrade">();
 
@@ -15,11 +16,14 @@ export function useTailwindColorQuery() {
   const colorGrade = getQueryValue("colorgrade") ?? "";
 
   const currentColor = useMemo(() => {
-    return findTailwindColor({
-      name: colorName,
-      grade: colorGrade,
-    });
-  }, [colorName, colorGrade]);
+    return findTailwindColor(
+      {
+        name: colorName,
+        grade: colorGrade,
+      },
+      tailwindColors,
+    );
+  }, [colorName, colorGrade, tailwindColors]);
 
   function resetCurrentColor() {
     deleteQueries(["colorname", "colorgrade"]);

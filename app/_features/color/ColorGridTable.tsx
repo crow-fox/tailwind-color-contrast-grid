@@ -11,8 +11,7 @@ import { Suspense } from "react";
 
 export function ColorGridTable() {
   const tailwindThemeColors = getTailwindThemeColors();
-  const { graded: tailwindGradedColors, single: tailwindSingleColors } =
-    getTailwindColors(tailwindThemeColors);
+  const tailwindColors = getTailwindColors(tailwindThemeColors);
   const tailwindColorGrades = getTailwindColorGrades(tailwindThemeColors);
 
   return (
@@ -35,12 +34,12 @@ export function ColorGridTable() {
           </tr>
         </thead>
         <tbody>
-          {getObjectKeys(tailwindGradedColors).map((name) => (
+          {getObjectKeys(tailwindColors.graded).map((name) => (
             <tr key={name}>
               <th className=" border border-black px-2 py-2 align-top text-sm">
                 {capitalizeFirstLetter(name)}
               </th>
-              {getObjectKeys(tailwindGradedColors[name]).map((grade) => (
+              {getObjectKeys(tailwindColors.graded[name]).map((grade) => (
                 <td key={grade} className="border border-slate-200">
                   <Suspense
                     fallback={
@@ -48,7 +47,7 @@ export function ColorGridTable() {
                         color={{
                           name,
                           grade,
-                          value: tailwindGradedColors[name][grade],
+                          value: tailwindColors.graded[name][grade],
                         }}
                       />
                     }
@@ -57,15 +56,16 @@ export function ColorGridTable() {
                       color={{
                         name,
                         grade,
-                        value: tailwindGradedColors[name][grade],
+                        value: tailwindColors.graded[name][grade],
                       }}
+                      tailwindColors={tailwindColors}
                     />
                   </Suspense>
                 </td>
               ))}
             </tr>
           ))}
-          {getObjectKeys(tailwindSingleColors).map((name) => (
+          {getObjectKeys(tailwindColors.single).map((name) => (
             <tr key={name}>
               <th className=" border border-black px-2 py-2 align-top text-sm">
                 {capitalizeFirstLetter(name)}
@@ -79,7 +79,7 @@ export function ColorGridTable() {
                     <FallbackColorGridItem
                       color={{
                         name,
-                        value: tailwindSingleColors[name],
+                        value: tailwindColors.single[name],
                       }}
                     />
                   }
@@ -87,8 +87,9 @@ export function ColorGridTable() {
                   <ColorGridItem
                     color={{
                       name,
-                      value: tailwindSingleColors[name],
+                      value: tailwindColors.single[name],
                     }}
+                    tailwindColors={tailwindColors}
                   />
                 </Suspense>
               </td>

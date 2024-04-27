@@ -42,6 +42,8 @@ export function getTailwindColors(colors: DefaultColors) {
   } as const;
 }
 
+export type TailwindColors = ReturnType<typeof getTailwindColors>;
+
 const tailwindGradedColorNameSchema = union(
   getObjectKeys(getTailwindColors(getTailwindThemeColors()).graded).map(
     (color) => literal(color),
@@ -121,7 +123,10 @@ export function isTailwindColorGrade(
   return false;
 }
 
-export function findTailwindColor(color: { name: string; grade: string }):
+export function findTailwindColor(
+  color: { name: string; grade: string },
+  tailwindColors: TailwindColors,
+):
   | {
       type: "notFound";
     }
@@ -140,9 +145,6 @@ export function findTailwindColor(color: { name: string; grade: string }):
         value: string;
       };
     } {
-  const tailwindThemeColors = getTailwindThemeColors();
-  const tailwindColors = getTailwindColors(tailwindThemeColors);
-
   if (!isTailwindColorName(color.name)) {
     return {
       type: "notFound",
