@@ -48,12 +48,14 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
       href={createColorHref(color)}
       scroll={false}
       className={[
-        "grid gap-y-3 p-2 hover:shadow-[inset_0_0_0_2px_black] focus-visible:shadow-[inset_0_0_0_2px_black] focus-visible:outline-none",
-        isCurrent ? "shadow-[inset_0_0_0_2px_black]" : "shadow-none",
+        "grid gap-y-3 p-2 hover:shadow-[inset_0_0_0_2px_theme(colors.gray[900])] focus-visible:shadow-[inset_0_0_0_2px_theme(colors.gray[900])] focus-visible:outline-none  dark:hover:shadow-[inset_0_0_0_2px_theme(colors.gray[200])] dark:focus-visible:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]",
+        isCurrent
+          ? "shadow-[inset_0_0_0_2px_theme(colors.gray[900])] dark:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]"
+          : "shadow-none",
       ].join(" ")}
     >
       <div
-        className="grid h-10 w-20 place-content-center rounded-md border border-slate-100 text-xs/none  "
+        className="grid h-10 w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800  "
         style={{
           backgroundColor: color.value,
           color:
