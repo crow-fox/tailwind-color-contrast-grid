@@ -36,7 +36,7 @@ export function ColorGridTable() {
         <tbody>
           {getObjectKeys(tailwindColors.graded).map((name) => (
             <tr key={name}>
-              <th className=" border border-black px-2 py-2 align-top text-sm">
+              <th className=" border border-black px-2 py-2 text-sm">
                 {capitalizeFirstLetter(name)}
               </th>
               {getObjectKeys(tailwindColors.graded[name]).map((grade) => (
