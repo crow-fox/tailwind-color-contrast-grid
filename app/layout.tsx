@@ -12,15 +12,17 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="grid min-h-svh grid-rows-[1fr_auto] bg-white font-mono text-black">
-        <main className="px-4 py-8">{children}</main>
-        <footer className="p-4">
-          <p className="grid justify-center">
-            <a href="https://github.com/crow-fox">
-              <small className="text-sm">&copy; crow-fox</small>
-            </a>
-          </p>
-        </footer>
+      <body>
+        <div className="grid min-h-svh grid-rows-[1fr_auto] bg-white font-mono text-black">
+          <main className="px-4 py-8">{children}</main>
+          <footer className="p-4">
+            <p className="grid justify-center">
+              <a href="https://github.com/crow-fox">
+                <small className="text-sm">&copy; crow-fox</small>
+              </a>
+            </p>
+          </footer>
+        </div>
       </body>
     </html>
   );
