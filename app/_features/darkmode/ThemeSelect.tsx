@@ -17,7 +17,7 @@ export function ThemeSelect() {
           id={uid}
           value={theme}
           onChange={(e) => setTheme(e.target.value)}
-          className="inline-grid appearance-none rounded-lg border border-gray-900 py-2 pl-2 pr-6 text-base/none [grid-area:1/1] dark:border-gray-200 "
+          className="inline-grid appearance-none rounded-lg border border-gray-900 bg-white py-2 pl-2 pr-6 text-base/none [grid-area:1/1] dark:border-gray-200 dark:bg-gray-950 "
         >
           <option value="system">System</option>
           <option value="dark">Dark</option>
