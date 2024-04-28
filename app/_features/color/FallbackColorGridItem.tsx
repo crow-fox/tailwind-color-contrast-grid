@@ -21,7 +21,7 @@ export function FallbackColorGridItem({ color }: Props) {
   return (
     <div className="grid gap-y-3 p-2 hover:shadow-[inset_0_0_0_2px_black]">
       <div
-        className="grid h-10 w-20 place-content-center rounded-md border border-slate-100 text-xs/none  "
+        className="grid h-10 w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800 "
         style={{
           backgroundColor: color.value,
         }}

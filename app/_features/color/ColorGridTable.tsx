@@ -19,14 +19,14 @@ export function ColorGridTable() {
       <table className=" relative w-full border-collapse">
         <thead>
           <tr>
-            <th className="border border-black bg-[linear-gradient(to_top_right,transparent_calc(50%-0.5px),theme(colors.black)_50%,transparent_calc(50%+0.5px))]  ">
+            <th className="border border-gray-900 bg-[linear-gradient(to_top_right,transparent_calc(50%-0.5px),theme(colors.gray[900])_50%,transparent_calc(50%+0.5px))] dark:border-gray-200 dark:bg-[linear-gradient(to_top_right,transparent_calc(50%-0.5px),theme(colors.gray[200])_50%,transparent_calc(50%+0.5px))]  ">
               <p className="text-end text-xs">Grade</p>
               <p className="text-start text-xs">Color</p>
             </th>
             {tailwindColorGrades.map((grade) => (
               <th
                 key={grade}
-                className=" border border-black px-2 py-2 text-sm"
+                className=" border border-gray-900 px-2 py-2 text-sm dark:border-gray-200"
               >
                 {grade}
               </th>
@@ -36,11 +36,14 @@ export function ColorGridTable() {
         <tbody>
           {getObjectKeys(tailwindColors.graded).map((name) => (
             <tr key={name}>
-              <th className=" border border-black px-2 py-2 text-sm">
+              <th className=" border border-gray-900 px-2 py-2 text-sm dark:border-gray-200">
                 {capitalizeFirstLetter(name)}
               </th>
               {getObjectKeys(tailwindColors.graded[name]).map((grade) => (
-                <td key={grade} className="border border-slate-200">
+                <td
+                  key={grade}
+                  className="border border-gray-200 dark:border-gray-700"
+                >
                   <Suspense
                     fallback={
                       <FallbackColorGridItem
@@ -67,12 +70,12 @@ export function ColorGridTable() {
           ))}
           {getObjectKeys(tailwindColors.single).map((name) => (
             <tr key={name}>
-              <th className=" border border-black px-2 py-2 align-top text-sm">
+              <th className=" border border-gray-900 px-2 py-2 align-top text-sm dark:border-gray-200">
                 {capitalizeFirstLetter(name)}
               </th>
               <td
                 colSpan={tailwindColorGrades.length}
-                className="border border-slate-200"
+                className="border border-gray-200 dark:border-gray-700"
               >
                 <Suspense
                   fallback={

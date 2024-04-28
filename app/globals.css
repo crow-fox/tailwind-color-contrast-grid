@@ -7,6 +7,6 @@
     @apply outline-none;
   }
   :focus-visible {
-    @apply outline outline-black;
+    @apply outline-2 outline-gray-900 dark:outline-gray-200 outline-offset-2;
   }
 }
