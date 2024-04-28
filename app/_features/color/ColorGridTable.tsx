@@ -70,7 +70,7 @@ export function ColorGridTable() {
           ))}
           {getObjectKeys(tailwindColors.single).map((name) => (
             <tr key={name}>
-              <th className=" border border-gray-900 px-2 py-2 align-top text-sm dark:border-gray-200">
+              <th className=" border border-gray-900 px-2 py-2 text-sm dark:border-gray-200">
                 {capitalizeFirstLetter(name)}
               </th>
               <td
