@@ -4,5 +4,6 @@ const config: Config = {
   content: ["./app/**/*.{ts,tsx}"],
   theme: {},
   plugins: [],
+  darkMode: ["selector", '[data-theme="dark"]'],
 };
 export default config;
