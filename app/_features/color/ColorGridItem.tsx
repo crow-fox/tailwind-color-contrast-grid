@@ -55,7 +55,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
       ].join(" ")}
     >
       <div
-        className="grid h-10 w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800  "
+        className="grid h-10 w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800  "
         style={{
           backgroundColor: color.value,
           color:
