@@ -15,19 +15,17 @@ const references = [
 
 export default function ReferencePage() {
   return (
-    <div className="mx-auto grid w-[min(100%,40rem)] gap-y-8">
-      <div className=" grid gap-y-4 ">
-        <h1 className=" text-lg font-bold">参考サイト</h1>
-        <ul className=" grid list-disc gap-y-2 pl-4">
-          {references.map((reference) => (
-            <li key={reference.href}>
-              <ReferenceLink href={reference.href}>
-                {reference.title}
-              </ReferenceLink>
-            </li>
-          ))}
-        </ul>
-      </div>
+    <div className=" grid gap-y-4 ">
+      <h1 className=" text-lg font-bold">参考サイト</h1>
+      <ul className=" grid list-disc gap-y-2 pl-4">
+        {references.map((reference) => (
+          <li key={reference.href}>
+            <ReferenceLink href={reference.href}>
+              {reference.title}
+            </ReferenceLink>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
