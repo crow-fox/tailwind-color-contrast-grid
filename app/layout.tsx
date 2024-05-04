@@ -17,9 +17,9 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <div className="grid min-h-svh grid-rows-[auto_1fr_auto] bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
-            <header className=" grid border-b border-gray-200 p-4 dark:border-gray-700">
-              <nav>
+          <div className="grid min-h-svh grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] grid-rows-[auto_1fr_auto] bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
+            <header className=" grid grid-cols-subgrid border-b border-gray-200 p-4 [grid-column:1/-1] dark:border-gray-700">
+              <nav className=" grid [grid-column:2]">
                 <ul className=" flex flex-wrap items-center gap-4">
                   <li className=" mr-auto">
                     <Link href="/" className="underline underline-offset-2">
@@ -40,9 +40,11 @@ export default function RootLayout({
                 </ul>
               </nav>
             </header>
-            <main className="px-4 py-8">{children}</main>
-            <footer className="p-4">
-              <p className="grid justify-center">
+            <main className="grid grid-cols-subgrid py-8 [grid-column:1/-1] ">
+              <div className=" [grid-column:2]">{children}</div>
+            </main>
+            <footer className="grid grid-cols-subgrid py-4 [grid-column:1/-1]">
+              <p className="grid justify-center [grid-column:2]">
                 <a href="https://github.com/crow-fox">
                   <small className="text-sm">&copy; crow-fox</small>
                 </a>

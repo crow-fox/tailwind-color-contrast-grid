@@ -15,7 +15,7 @@ export function ColorGridTable() {
   const tailwindColorGrades = getTailwindColorGrades(tailwindThemeColors);
 
   return (
-    <div className=" grid grid-cols-[minmax(0,1fr)] justify-center overflow-x-auto">
+    <div className=" grid  overflow-x-auto">
       <table className=" relative w-full border-collapse">
         <thead>
           <tr>
