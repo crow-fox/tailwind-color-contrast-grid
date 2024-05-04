@@ -1,3 +1,5 @@
+import { Metadata } from "next";
+
 const references = [
   {
     title: "Customizing Colors - Tailwind CSS",
@@ -12,6 +14,10 @@ const references = [
     href: "https://www.w3.org/TR/WCAG22/",
   },
 ] as const satisfies { title: string; href: string }[];
+
+export const metadata: Metadata = {
+  title: "参考サイト",
+};
 
 export default function ReferencePage() {
   return (
