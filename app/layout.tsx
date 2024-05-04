@@ -5,7 +5,10 @@ import { ThemeSelect } from "@/app/_features/darkmode/ThemeSelect";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Tailwind Color Contrast Grid",
+  title: {
+    template: "%s | Tailwind Color Contrast Grid",
+    default: "Tailwind Color Contrast Grid",
+  },
 };
 
 export default function RootLayout({
