@@ -3,7 +3,7 @@ import "./globals.css";
 import { ThemeProvider } from "next-themes";
 import Link from "next/link";
 import { Logo } from "@/app/_components/Logo";
-import { ThemeSelect } from "@/app/_features/darkmode/ThemeSelect";
+import { ThemeSelect } from "@/app/_components/ThemeSelect";
 
 export const metadata: Metadata = {
   title: {
