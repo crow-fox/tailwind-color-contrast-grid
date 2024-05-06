@@ -61,16 +61,15 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
           }
         | { name: TailwindSingleColorName },
     ) => {
-      if ("grade" in color) {
-        return updateQueries({
+      return updateQueries(
+        {
           colorname: color.name,
-          colorgrade: color.grade,
-        });
-      }
-      return updateQueries({
-        colorname: color.name,
-        colorgrade: undefined,
-      });
+          colorgrade: "grade" in color ? color.grade : undefined,
+        },
+        {
+          scroll: false,
+        },
+      );
     },
     [updateQueries],
   );
