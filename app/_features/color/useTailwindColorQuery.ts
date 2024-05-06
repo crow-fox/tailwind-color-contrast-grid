@@ -6,7 +6,7 @@ import {
   findTailwindColor,
 } from "@/app/_features/color/tailwind";
 import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 export function useTailwindColorQuery(tailwindColors: TailwindColors) {
   const { getQueryValue, deleteQueries, updateQueries, createHrefWithQueries } =
@@ -25,9 +25,9 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     );
   }, [colorName, colorGrade, tailwindColors]);
 
-  function resetCurrentColor() {
+  const resetCurrentColor = useCallback(() => {
     deleteQueries(["colorname", "colorgrade"]);
-  }
+  }, [deleteQueries]);
 
   function createColorHref(
     color:
