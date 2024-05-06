@@ -6,7 +6,7 @@ import {
   findTailwindColor,
 } from "@/app/_features/color/tailwind";
 import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
-import { useMemo } from "react";
+import { useCallback, useMemo } from "react";
 
 export function useTailwindColorQuery(tailwindColors: TailwindColors) {
   const { getQueryValue, deleteQueries, updateQueries, createHrefWithQueries } =
@@ -25,53 +25,55 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     );
   }, [colorName, colorGrade, tailwindColors]);
 
-  function resetCurrentColor() {
+  const resetCurrentColor = useCallback(() => {
     deleteQueries(["colorname", "colorgrade"]);
-  }
+  }, [deleteQueries]);
 
-  function createColorHref(
-    color:
-      | {
-          name: TailwindGradedColorName;
-          grade: TailwindColorGrade;
-        }
-      | {
-          name: TailwindSingleColorName;
-        },
-  ) {
-    if ("grade" in color) {
+  const createColorHref = useCallback(
+    (
+      color:
+        | {
+            name: TailwindGradedColorName;
+            grade: TailwindColorGrade;
+          }
+        | { name: TailwindSingleColorName },
+    ) => {
+      if ("grade" in color) {
+        return createHrefWithQueries({
+          colorname: color.name,
+          colorgrade: color.grade,
+        });
+      }
       return createHrefWithQueries({
         colorname: color.name,
-        colorgrade: color.grade,
+        colorgrade: undefined,
       });
-    }
-    return createHrefWithQueries({
-      colorname: color.name,
-      colorgrade: undefined,
-    });
-  }
+    },
+    [createHrefWithQueries],
+  );
 
-  function selectColor(
-    color:
-      | {
-          name: TailwindGradedColorName;
-          grade: TailwindColorGrade;
-        }
-      | {
-          name: TailwindSingleColorName;
-        },
-  ) {
-    if ("grade" in color) {
+  const selectColor = useCallback(
+    (
+      color:
+        | {
+            name: TailwindGradedColorName;
+            grade: TailwindColorGrade;
+          }
+        | { name: TailwindSingleColorName },
+    ) => {
+      if ("grade" in color) {
+        return updateQueries({
+          colorname: color.name,
+          colorgrade: color.grade,
+        });
+      }
       return updateQueries({
         colorname: color.name,
-        colorgrade: color.grade,
+        colorgrade: undefined,
       });
-    }
-    return updateQueries({
-      colorname: color.name,
-      colorgrade: undefined,
-    });
-  }
+    },
+    [updateQueries],
+  );
 
   return {
     selectColor,
