@@ -52,27 +52,28 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     [createHrefWithQueries],
   );
 
-  function selectColor(
-    color:
-      | {
-          name: TailwindGradedColorName;
-          grade: TailwindColorGrade;
-        }
-      | {
-          name: TailwindSingleColorName;
-        },
-  ) {
-    if ("grade" in color) {
+  const selectColor = useCallback(
+    (
+      color:
+        | {
+            name: TailwindGradedColorName;
+            grade: TailwindColorGrade;
+          }
+        | { name: TailwindSingleColorName },
+    ) => {
+      if ("grade" in color) {
+        return updateQueries({
+          colorname: color.name,
+          colorgrade: color.grade,
+        });
+      }
       return updateQueries({
         colorname: color.name,
-        colorgrade: color.grade,
+        colorgrade: undefined,
       });
-    }
-    return updateQueries({
-      colorname: color.name,
-      colorgrade: undefined,
-    });
-  }
+    },
+    [updateQueries],
+  );
 
   return {
     selectColor,
