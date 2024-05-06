@@ -12,7 +12,6 @@ import {
 } from "@/app/_features/color/tailwind";
 import { useTailwindColorQuery } from "@/app/_features/color/useTailwindColorQuery";
 import { useClipboardCopy } from "@/app/_utils/useClipboardCopy";
-import Link from "next/link";
 import { useCallback } from "react";
 
 type Props = {
@@ -30,7 +29,7 @@ type Props = {
 };
 
 export function ColorGridItem({ color, tailwindColors }: Props) {
-  const { createColorHref, currentColor } =
+  const { currentColor, selectColor, resetCurrentColor } =
     useTailwindColorQuery(tailwindColors);
 
   const contrastResult =
@@ -49,6 +48,10 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
   const handleCopy = useCallback(async () => {
     await clipboardCopy(color.value);
   }, [color.value, clipboardCopy]);
+
+  const handleClickColor = useCallback(() => {
+    isCurrent ? resetCurrentColor({ scroll: false }) : selectColor(color);
+  }, [color, isCurrent, resetCurrentColor, selectColor]);
 
   return (
     <div
@@ -73,13 +76,12 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
         {currentColor.type !== "notFound" && "テキスト"}
       </div>
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 text-sm/none">
-        <Link
-          scroll={false}
-          href={createColorHref(color)}
+        <button
+          onClick={handleClickColor}
           className="text-sm/none after:absolute after:inset-0 after:block  after:hover:shadow-[inset_0_0_0_2px_theme(colors.gray[900])] focus-visible:outline-none after:focus-visible:shadow-[inset_0_0_0_2px_theme(colors.gray[900])] after:dark:hover:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]  after:dark:focus-visible:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]"
         >
           {color.value}
-        </Link>
+        </button>
         <button
           onClick={handleCopy}
           className=" isolate inline-grid size-6 place-content-center rounded-lg border border-gray-900 bg-white text-sm/none  dark:border-gray-200 dark:bg-gray-950"
