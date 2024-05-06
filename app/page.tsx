@@ -12,12 +12,9 @@ export default function Home() {
 
   return (
     <div className="grid gap-y-8">
-      <div className=" grid gap-y-2">
-        <h1 className=" text-lg font-bold">Tailwind Color Contrast Grid</h1>
-        <Suspense fallback={<p>読み込み中...</p>}>
-          <ColorController tailwindColors={tailwindColors} />
-        </Suspense>
-      </div>
+      <Suspense fallback={<p>読み込み中...</p>}>
+        <ColorController tailwindColors={tailwindColors} />
+      </Suspense>
       <ColorGridTable />
     </div>
   );
