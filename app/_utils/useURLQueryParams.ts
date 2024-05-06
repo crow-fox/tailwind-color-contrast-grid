@@ -35,9 +35,11 @@ export function useURLQueryParams<T extends string>() {
   );
 
   const updateQueries = useCallback(
-    (queries: Queries<T>) => {
+    (queries: Queries<T>, options: { scroll: boolean } = { scroll: true }) => {
       const queryString = createQueryString(searchParams, queries);
-      router.push(`${pathname}?${queryString}`);
+      router.push(`${pathname}?${queryString}`, {
+        scroll: options.scroll,
+      });
     },
     [pathname, router, searchParams],
   );
@@ -51,13 +53,15 @@ export function useURLQueryParams<T extends string>() {
   );
 
   const deleteQueries = useCallback(
-    (queryKeys: T[]) => {
+    (queryKeys: T[], options: { scroll: boolean } = { scroll: true }) => {
       // 対象のクエリパラメーターのみ削除
       const params = new URLSearchParams(searchParams);
       for (const key of queryKeys) {
         params.delete(key);
       }
-      router.push(`${pathname}?${params.toString()}`);
+      router.push(`${pathname}?${params.toString()}`, {
+        scroll: options.scroll,
+      });
     },
     [pathname, router, searchParams],
   );
