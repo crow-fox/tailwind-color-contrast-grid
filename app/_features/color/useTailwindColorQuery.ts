@@ -9,8 +9,9 @@ import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
 import { useCallback, useMemo } from "react";
 
 export function useTailwindColorQuery(tailwindColors: TailwindColors) {
-  const { getQueryValue, deleteQueries, updateQueries, createHrefWithQueries } =
-    useURLQueryParams<"colorname" | "colorgrade">();
+  const { getQueryValue, deleteQueries, updateQueries } = useURLQueryParams<
+    "colorname" | "colorgrade"
+  >();
 
   const colorName = getQueryValue("colorname") ?? "";
   const colorGrade = getQueryValue("colorgrade") ?? "";
@@ -25,31 +26,11 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     );
   }, [colorName, colorGrade, tailwindColors]);
 
-  const resetCurrentColor = useCallback(() => {
-    deleteQueries(["colorname", "colorgrade"]);
-  }, [deleteQueries]);
-
-  const createColorHref = useCallback(
-    (
-      color:
-        | {
-            name: TailwindGradedColorName;
-            grade: TailwindColorGrade;
-          }
-        | { name: TailwindSingleColorName },
-    ) => {
-      if ("grade" in color) {
-        return createHrefWithQueries({
-          colorname: color.name,
-          colorgrade: color.grade,
-        });
-      }
-      return createHrefWithQueries({
-        colorname: color.name,
-        colorgrade: undefined,
-      });
+  const resetCurrentColor = useCallback(
+    (options: { scroll: boolean } = { scroll: true }) => {
+      deleteQueries(["colorname", "colorgrade"], options);
     },
-    [createHrefWithQueries],
+    [deleteQueries],
   );
 
   const selectColor = useCallback(
@@ -61,16 +42,15 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
           }
         | { name: TailwindSingleColorName },
     ) => {
-      if ("grade" in color) {
-        return updateQueries({
+      return updateQueries(
+        {
           colorname: color.name,
-          colorgrade: color.grade,
-        });
-      }
-      return updateQueries({
-        colorname: color.name,
-        colorgrade: undefined,
-      });
+          colorgrade: "grade" in color ? color.grade : undefined,
+        },
+        {
+          scroll: false,
+        },
+      );
     },
     [updateQueries],
   );
@@ -79,6 +59,5 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     selectColor,
     currentColor,
     resetCurrentColor,
-    createColorHref,
   } as const;
 }

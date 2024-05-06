@@ -44,14 +44,6 @@ export function useURLQueryParams<T extends string>() {
     [pathname, router, searchParams],
   );
 
-  const createHrefWithQueries = useCallback(
-    (queries: Queries<T>) => {
-      const queryString = createQueryString(searchParams, queries);
-      return `${pathname}?${queryString}`;
-    },
-    [pathname, searchParams],
-  );
-
   const deleteQueries = useCallback(
     (queryKeys: T[], options: { scroll: boolean } = { scroll: true }) => {
       // 対象のクエリパラメーターのみ削除
@@ -69,7 +61,6 @@ export function useURLQueryParams<T extends string>() {
   return {
     getQueryValue,
     updateQueries,
-    createHrefWithQueries,
     deleteQueries,
   } as const;
 }
