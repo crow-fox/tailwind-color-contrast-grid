@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import { ThemeSelect } from "@/app/_features/darkmode/ThemeSelect";
 import Link from "next/link";
+import { Logo } from "@/app/_components/Logo";
+import { ThemeSelect } from "@/app/_components/ThemeSelect";
 
 export const metadata: Metadata = {
   title: {
@@ -22,26 +23,24 @@ export default function RootLayout({
         <ThemeProvider>
           <div className=" flex min-h-svh flex-col bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
             <header className=" grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-b border-gray-200 p-4  dark:border-gray-700">
-              <nav className=" grid [grid-column:2]">
-                <ul className=" flex flex-wrap items-center gap-4">
-                  <li className=" mr-auto">
-                    <Link href="/" className="underline underline-offset-2">
-                      ホーム
-                    </Link>
-                  </li>
-                  <li>
+              <div className="flex flex-wrap items-center justify-between gap-4 [grid-column:2]">
+                <Logo>
+                  <Link href="/" className="text-lg font-bold">
+                    Tailwind Color Contrast Grid
+                  </Link>
+                </Logo>
+                <div className=" flex flex-wrap items-center gap-4">
+                  <p>
                     <Link
                       href="/reference"
                       className="underline underline-offset-2"
                     >
                       参考サイト
                     </Link>
-                  </li>
-                  <li>
-                    <ThemeSelect />
-                  </li>
-                </ul>
-              </nav>
+                  </p>
+                  <ThemeSelect />
+                </div>
+              </div>
             </header>
             <main className="grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] py-8 ">
               <div className=" [grid-column:2]">{children}</div>
