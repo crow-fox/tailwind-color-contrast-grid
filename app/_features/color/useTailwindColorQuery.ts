@@ -25,9 +25,12 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     );
   }, [colorName, colorGrade, tailwindColors]);
 
-  const resetCurrentColor = useCallback(() => {
-    deleteQueries(["colorname", "colorgrade"]);
-  }, [deleteQueries]);
+  const resetCurrentColor = useCallback(
+    (options: { scroll: boolean } = { scroll: true }) => {
+      deleteQueries(["colorname", "colorgrade"], options);
+    },
+    [deleteQueries],
+  );
 
   const createColorHref = useCallback(
     (
