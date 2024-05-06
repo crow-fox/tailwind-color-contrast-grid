@@ -53,13 +53,15 @@ export function useURLQueryParams<T extends string>() {
   );
 
   const deleteQueries = useCallback(
-    (queryKeys: T[]) => {
+    (queryKeys: T[], options: { scroll: boolean } = { scroll: true }) => {
       // 対象のクエリパラメーターのみ削除
       const params = new URLSearchParams(searchParams);
       for (const key of queryKeys) {
         params.delete(key);
       }
-      router.push(`${pathname}?${params.toString()}`);
+      router.push(`${pathname}?${params.toString()}`, {
+        scroll: options.scroll,
+      });
     },
     [pathname, router, searchParams],
   );
