@@ -35,9 +35,11 @@ export function useURLQueryParams<T extends string>() {
   );
 
   const updateQueries = useCallback(
-    (queries: Queries<T>) => {
+    (queries: Queries<T>, options: { scroll: boolean } = { scroll: true }) => {
       const queryString = createQueryString(searchParams, queries);
-      router.push(`${pathname}?${queryString}`);
+      router.push(`${pathname}?${queryString}`, {
+        scroll: options.scroll,
+      });
     },
     [pathname, router, searchParams],
   );
