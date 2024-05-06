@@ -9,8 +9,9 @@ import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
 import { useCallback, useMemo } from "react";
 
 export function useTailwindColorQuery(tailwindColors: TailwindColors) {
-  const { getQueryValue, deleteQueries, updateQueries, createHrefWithQueries } =
-    useURLQueryParams<"colorname" | "colorgrade">();
+  const { getQueryValue, deleteQueries, updateQueries } = useURLQueryParams<
+    "colorname" | "colorgrade"
+  >();
 
   const colorName = getQueryValue("colorname") ?? "";
   const colorGrade = getQueryValue("colorgrade") ?? "";
@@ -30,29 +31,6 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
       deleteQueries(["colorname", "colorgrade"], options);
     },
     [deleteQueries],
-  );
-
-  const createColorHref = useCallback(
-    (
-      color:
-        | {
-            name: TailwindGradedColorName;
-            grade: TailwindColorGrade;
-          }
-        | { name: TailwindSingleColorName },
-    ) => {
-      if ("grade" in color) {
-        return createHrefWithQueries({
-          colorname: color.name,
-          colorgrade: color.grade,
-        });
-      }
-      return createHrefWithQueries({
-        colorname: color.name,
-        colorgrade: undefined,
-      });
-    },
-    [createHrefWithQueries],
   );
 
   const selectColor = useCallback(
@@ -81,6 +59,5 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     selectColor,
     currentColor,
     resetCurrentColor,
-    createColorHref,
   } as const;
 }
