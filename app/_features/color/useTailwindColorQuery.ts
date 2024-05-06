@@ -29,27 +29,28 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     deleteQueries(["colorname", "colorgrade"]);
   }, [deleteQueries]);
 
-  function createColorHref(
-    color:
-      | {
-          name: TailwindGradedColorName;
-          grade: TailwindColorGrade;
-        }
-      | {
-          name: TailwindSingleColorName;
-        },
-  ) {
-    if ("grade" in color) {
+  const createColorHref = useCallback(
+    (
+      color:
+        | {
+            name: TailwindGradedColorName;
+            grade: TailwindColorGrade;
+          }
+        | { name: TailwindSingleColorName },
+    ) => {
+      if ("grade" in color) {
+        return createHrefWithQueries({
+          colorname: color.name,
+          colorgrade: color.grade,
+        });
+      }
       return createHrefWithQueries({
         colorname: color.name,
-        colorgrade: color.grade,
+        colorgrade: undefined,
       });
-    }
-    return createHrefWithQueries({
-      colorname: color.name,
-      colorgrade: undefined,
-    });
-  }
+    },
+    [createHrefWithQueries],
+  );
 
   function selectColor(
     color:
