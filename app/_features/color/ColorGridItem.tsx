@@ -6,10 +6,11 @@ import {
 } from "@/app/_features/color/contrast";
 import {
   TailwindColorGrade,
-  TailwindColors,
   TailwindGradedColorName,
   TailwindSingleColorName,
-} from "@/app/_features/color/tailwind";
+} from "@/app/_features/color/tailwind.client";
+import { TailwindColors } from "@/app/_features/color/tailwind.server";
+
 import { useTailwindColorQuery } from "@/app/_features/color/useTailwindColorQuery";
 import { useClipboardCopy } from "@/app/_utils/useClipboardCopy";
 import { useCallback } from "react";

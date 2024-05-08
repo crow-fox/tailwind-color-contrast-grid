@@ -4,7 +4,8 @@ import {
   getTailwindColorGrades,
   getTailwindColors,
   getTailwindThemeColors,
-} from "@/app/_features/color/tailwind";
+} from "@/app/_features/color/tailwind.server";
+
 import { getObjectKeys } from "@/app/_utils/object";
 import { capitalizeFirstLetter } from "@/app/_utils/string";
 import { Suspense } from "react";
