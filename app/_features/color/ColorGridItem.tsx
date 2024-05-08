@@ -55,14 +55,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
   }, [color, isCurrent, resetCurrentColor, selectColor]);
 
   return (
-    <div
-      className={[
-        "relative grid gap-y-2 p-2 ",
-        isCurrent
-          ? "shadow-[inset_0_0_0_2px_theme(colors.gray[900])] dark:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]"
-          : "shadow-none",
-      ].join(" ")}
-    >
+    <div className="relative grid gap-y-2 p-2 ">
       <div
         aria-hidden="true"
         className="grid h-10  w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800  "
@@ -79,7 +72,13 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 text-sm/none">
         <button
           onClick={handleClickColor}
-          className="text-sm/none after:absolute after:inset-0 after:block  after:hover:shadow-[inset_0_0_0_2px_theme(colors.gray[900])] focus-visible:outline-none after:focus-visible:shadow-[inset_0_0_0_2px_theme(colors.gray[900])] after:dark:hover:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]  after:dark:focus-visible:shadow-[inset_0_0_0_2px_theme(colors.gray[200])]"
+          className={[
+            "text-sm/none after:absolute after:inset-0 after:block focus-visible:outline-none",
+            "after:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]  after:dark:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]",
+            isCurrent
+              ? "after:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]"
+              : "after:shadow-none",
+          ].join(" ")}
         >
           {color.value}
         </button>
