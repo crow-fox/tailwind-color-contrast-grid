@@ -19,14 +19,17 @@ type Props = {
 
 export function FallbackColorGridItem({ color }: Props) {
   return (
-    <div className="grid gap-y-3 p-2 hover:shadow-[inset_0_0_0_2px_black]">
+    <div className="grid gap-y-2 p-2">
       <div
-        className="grid h-10 w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800 "
+        className="grid h-10  w-full min-w-20 place-content-center rounded-md border border-gray-100  dark:border-gray-800  "
         style={{
           backgroundColor: color.value,
         }}
       ></div>
-      <p className=" text-sm/none ">{color.value}</p>
+      <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 ">
+        <p className="text-sm/none ">{color.value}</p>
+        <div className="size-6"></div>
+      </div>
     </div>
   );
 }
