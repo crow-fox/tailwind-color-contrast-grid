@@ -2,7 +2,7 @@ import {
   TailwindColorGrade,
   TailwindGradedColorName,
   TailwindSingleColorName,
-} from "@/app/_features/color/tailwind";
+} from "@/app/_features/color/tailwind.client";
 
 type Props = {
   color:

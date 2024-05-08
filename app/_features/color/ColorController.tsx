@@ -1,6 +1,6 @@
 "use client";
 
-import { TailwindColors } from "@/app/_features/color/tailwind";
+import { TailwindColors } from "@/app/_features/color/tailwind.server";
 import { useTailwindColorQuery } from "@/app/_features/color/useTailwindColorQuery";
 
 type Props = {

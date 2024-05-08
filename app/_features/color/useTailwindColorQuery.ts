@@ -1,10 +1,10 @@
 import {
   TailwindColorGrade,
-  TailwindColors,
   TailwindGradedColorName,
   TailwindSingleColorName,
   findTailwindColor,
-} from "@/app/_features/color/tailwind";
+} from "@/app/_features/color/tailwind.client";
+import { TailwindColors } from "@/app/_features/color/tailwind.server";
 import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
 import { useCallback, useMemo } from "react";
 

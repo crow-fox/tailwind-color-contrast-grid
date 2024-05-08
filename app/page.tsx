@@ -4,7 +4,7 @@ import { Suspense } from "react";
 import {
   getTailwindColors,
   getTailwindThemeColors,
-} from "@/app/_features/color/tailwind";
+} from "@/app/_features/color/tailwind.server";
 
 export default function Home() {
   const tailwindThemeColors = getTailwindThemeColors();
