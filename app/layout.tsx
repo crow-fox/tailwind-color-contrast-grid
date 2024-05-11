@@ -22,7 +22,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <div className=" flex min-h-svh flex-col bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
-            <header className=" grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-b border-gray-200 p-4  dark:border-gray-700">
+            <header className=" grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-b border-gray-200 py-4  dark:border-gray-700">
               <div className="flex flex-wrap items-center justify-between gap-4 [grid-column:2]">
                 <Logo>
                   <Link href="/" className="text-lg font-bold">
