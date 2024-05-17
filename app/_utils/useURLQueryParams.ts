@@ -1,6 +1,5 @@
 import { getObjectKeys } from "@/app/_utils/object";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
-import { useCallback } from "react";
 
 type Queries<T extends string> = Record<T, string | undefined>;
 
@@ -27,36 +26,33 @@ export function useURLQueryParams<T extends string>() {
   const router = useRouter();
   const pathname = usePathname();
 
-  const getQueryValue = useCallback(
-    (querykey: T) => {
-      return searchParams.get(querykey);
-    },
-    [searchParams],
-  );
+  function getQueryValue(querykey: T) {
+    return searchParams.get(querykey);
+  }
 
-  const updateQueries = useCallback(
-    (queries: Queries<T>, options: { scroll: boolean } = { scroll: true }) => {
-      const queryString = createQueryString(searchParams, queries);
-      router.push(`${pathname}?${queryString}`, {
-        scroll: options.scroll,
-      });
-    },
-    [pathname, router, searchParams],
-  );
+  function updateQueries(
+    queries: Queries<T>,
+    options: { scroll: boolean } = { scroll: true },
+  ) {
+    const queryString = createQueryString(searchParams, queries);
+    router.push(`${pathname}?${queryString}`, {
+      scroll: options.scroll,
+    });
+  }
 
-  const deleteQueries = useCallback(
-    (queryKeys: T[], options: { scroll: boolean } = { scroll: true }) => {
-      // 対象のクエリパラメーターのみ削除
-      const params = new URLSearchParams(searchParams);
-      for (const key of queryKeys) {
-        params.delete(key);
-      }
-      router.push(`${pathname}?${params.toString()}`, {
-        scroll: options.scroll,
-      });
-    },
-    [pathname, router, searchParams],
-  );
+  function deleteQueries(
+    queryKeys: T[],
+    options: { scroll: boolean } = { scroll: true },
+  ) {
+    // 対象のクエリパラメーターのみ削除
+    const params = new URLSearchParams(searchParams);
+    for (const key of queryKeys) {
+      params.delete(key);
+    }
+    router.push(`${pathname}?${params.toString()}`, {
+      scroll: options.scroll,
+    });
+  }
 
   return {
     getQueryValue,
