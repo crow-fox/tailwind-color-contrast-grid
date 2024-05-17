@@ -6,7 +6,6 @@ import {
 } from "@/app/_features/color/tailwind.client";
 import { TailwindColors } from "@/app/_features/color/tailwind.server";
 import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
-import { useCallback, useMemo } from "react";
 
 export function useTailwindColorQuery(tailwindColors: TailwindColors) {
   const { getQueryValue, deleteQueries, updateQueries } = useURLQueryParams<
@@ -16,44 +15,36 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
   const colorName = getQueryValue("colorname") ?? "";
   const colorGrade = getQueryValue("colorgrade") ?? "";
 
-  const currentColor = useMemo(() => {
-    return findTailwindColor(
+  const currentColor = findTailwindColor(
+    {
+      name: colorName,
+      grade: colorGrade,
+    },
+    tailwindColors,
+  );
+
+  function resetCurrentColor(options: { scroll: boolean } = { scroll: true }) {
+    deleteQueries(["colorname", "colorgrade"], options);
+  }
+
+  function selectColor(
+    color:
+      | {
+          name: TailwindGradedColorName;
+          grade: TailwindColorGrade;
+        }
+      | { name: TailwindSingleColorName },
+  ) {
+    updateQueries(
       {
-        name: colorName,
-        grade: colorGrade,
+        colorname: color.name,
+        colorgrade: "grade" in color ? color.grade : undefined,
       },
-      tailwindColors,
+      {
+        scroll: false,
+      },
     );
-  }, [colorName, colorGrade, tailwindColors]);
-
-  const resetCurrentColor = useCallback(
-    (options: { scroll: boolean } = { scroll: true }) => {
-      deleteQueries(["colorname", "colorgrade"], options);
-    },
-    [deleteQueries],
-  );
-
-  const selectColor = useCallback(
-    (
-      color:
-        | {
-            name: TailwindGradedColorName;
-            grade: TailwindColorGrade;
-          }
-        | { name: TailwindSingleColorName },
-    ) => {
-      return updateQueries(
-        {
-          colorname: color.name,
-          colorgrade: "grade" in color ? color.grade : undefined,
-        },
-        {
-          scroll: false,
-        },
-      );
-    },
-    [updateQueries],
-  );
+  }
 
   return {
     selectColor,

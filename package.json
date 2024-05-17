@@ -8,15 +8,17 @@
     "start": "serve out/",
     "lint:es": "next lint",
     "lint:markup": "markuplint 'app/**/*.tsx'",
-    "lint": "bun run lint:es && bun run lint:markup",
-    "format": "prettier --write ."
+    "lint": "bun run lint:es && bun run lint:markup && bun run lint:react",
+    "format": "prettier --write .",
+    "lint:react": "bunx react-compiler-healthcheck"
   },
   "dependencies": {
+    "babel-plugin-react-compiler": "^0.0.0-experimental-c23de8d-20240515",
     "colorjs.io": "^0.5.0",
-    "next": "14.2.2",
+    "next": "^14.3.0-canary.68",
     "next-themes": "^0.3.0",
-    "react": "^18",
-    "react-dom": "^18",
+    "react": "^19.0.0-rc-915b914b3a-20240515",
+    "react-dom": "^19.0.0-rc-915b914b3a-20240515",
     "serve": "^14.2.2",
     "server-only": "^0.0.1",
     "valibot": "^0.30.0"
