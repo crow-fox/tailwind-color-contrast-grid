@@ -45,7 +45,7 @@ export default function RootLayout({
             <main className="grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] py-8 ">
               <div className=" [grid-column:2]">{children}</div>
             </main>
-            <footer className="mt-auto grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] py-4">
+            <footer className="mt-auto grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-t  border-gray-200 py-4 dark:border-gray-700">
               <p className="grid justify-center [grid-column:2]">
                 <a href="https://github.com/crow-fox">
                   <small className="text-sm">&copy; crow-fox</small>
