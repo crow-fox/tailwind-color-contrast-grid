@@ -55,10 +55,10 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
   }, [color, isCurrent, resetCurrentColor, selectColor]);
 
   return (
-    <div className="relative grid gap-y-2 p-2 ">
+    <div className="relative grid gap-y-2 p-2">
       <div
         aria-hidden="true"
-        className="grid h-10  w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800  "
+        className="grid h-10 w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800"
         style={{
           backgroundColor: color.value,
           color:
@@ -74,7 +74,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
           onClick={handleClickColor}
           className={[
             "text-sm/none after:absolute after:inset-0 after:block focus-visible:outline-none",
-            "after:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]  after:dark:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]",
+            "after:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[200])] after:dark:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]",
             isCurrent
               ? "after:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]"
               : "after:shadow-none",
@@ -84,7 +84,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
         </button>
         <button
           onClick={handleCopy}
-          className=" isolate inline-grid size-6 place-content-center rounded-lg border border-gray-900 bg-white text-sm/none  dark:border-gray-200 dark:bg-gray-950"
+          className="isolate inline-grid size-6 place-content-center rounded-lg border border-gray-900 bg-white text-sm/none dark:border-gray-200 dark:bg-gray-950"
         >
           {isCopied ? (
             <svg
@@ -112,10 +112,10 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
         </button>
       </div>
       {contrastResult && (
-        <div className=" grid grid-cols-[auto_1fr] items-center gap-x-1">
+        <div className="grid grid-cols-[auto_1fr] items-center gap-x-1">
           <p
             className={[
-              "rounded-md p-1 text-xs/none ",
+              "rounded-md p-1 text-xs/none",
               getLevelClassNames(contrastResult.level),
             ].join(" ")}
           >
