@@ -21,15 +21,15 @@ export default function RootLayout({
     <html lang="ja" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <div className=" flex min-h-svh flex-col bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
-            <header className=" grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-b border-gray-200 py-4  dark:border-gray-700">
+          <div className="flex min-h-svh flex-col bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
+            <header className="grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-b border-gray-200 py-4 dark:border-gray-700">
               <div className="flex flex-wrap items-center justify-between gap-4 [grid-column:2]">
                 <Logo>
                   <Link href="/" className="text-lg font-bold">
                     Tailwind Color Contrast Grid
                   </Link>
                 </Logo>
-                <div className=" flex flex-wrap items-center gap-4">
+                <div className="flex flex-wrap items-center gap-4">
                   <p>
                     <Link
                       href="/reference"
@@ -42,10 +42,10 @@ export default function RootLayout({
                 </div>
               </div>
             </header>
-            <main className="grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] py-8 ">
-              <div className=" [grid-column:2]">{children}</div>
+            <main className="grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] py-8">
+              <div className="[grid-column:2]">{children}</div>
             </main>
-            <footer className="mt-auto grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-t  border-gray-200 py-4 dark:border-gray-700">
+            <footer className="mt-auto grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-t border-gray-200 py-4 dark:border-gray-700">
               <p className="grid justify-center [grid-column:2]">
                 <a href="https://github.com/crow-fox">
                   <small className="text-sm">&copy; crow-fox</small>

@@ -21,9 +21,9 @@ export const metadata: Metadata = {
 
 export default function ReferencePage() {
   return (
-    <div className=" grid gap-y-4 ">
-      <h1 className=" text-lg font-bold">参考サイト</h1>
-      <ul className=" grid list-disc gap-y-2 pl-4">
+    <div className="grid gap-y-4">
+      <h1 className="text-lg font-bold">参考サイト</h1>
+      <ul className="grid list-disc gap-y-2 pl-4">
         {references.map((reference) => (
           <li key={reference.href}>
             <ReferenceLink href={reference.href}>
@@ -44,7 +44,7 @@ function ReferenceLink({
   children: React.ReactNode;
 }>) {
   return (
-    <a href={href} className=" underline underline-offset-2">
+    <a href={href} className="underline underline-offset-2">
       {children}
     </a>
   );
