@@ -1,6 +1,6 @@
 import { TailwindColors } from "@/app/_features/color/tailwind.server";
 import { getObjectKeys } from "@/app/_utils/object";
-import { Output, literal, safeParse, union } from "valibot";
+import { InferOutput, literal, safeParse, union } from "valibot";
 
 function tailwindGradedColorNameSchemaFactory(tailwindColors: TailwindColors) {
   return union(
@@ -8,7 +8,7 @@ function tailwindGradedColorNameSchemaFactory(tailwindColors: TailwindColors) {
   );
 }
 
-export type TailwindGradedColorName = Output<
+export type TailwindGradedColorName = InferOutput<
   ReturnType<typeof tailwindGradedColorNameSchemaFactory>
 >;
 
@@ -32,7 +32,7 @@ function tailwindSingleColorNameSchemaFactory(tailwindColors: TailwindColors) {
   );
 }
 
-export type TailwindSingleColorName = Output<
+export type TailwindSingleColorName = InferOutput<
   ReturnType<typeof tailwindSingleColorNameSchemaFactory>
 >;
 
@@ -59,7 +59,7 @@ export function tailwindColorNameSchemaFactory(tailwindColors: TailwindColors) {
   );
 }
 
-type TailwindColorName = Output<
+type TailwindColorName = InferOutput<
   ReturnType<typeof tailwindColorNameSchemaFactory>
 >;
 
@@ -83,7 +83,7 @@ function tailwindColorGradeSchemaFactory(tailwindColors: TailwindColors) {
   );
 }
 
-export type TailwindColorGrade = Output<
+export type TailwindColorGrade = InferOutput<
   ReturnType<typeof tailwindColorGradeSchemaFactory>
 >;
 
