@@ -24,14 +24,14 @@
     "valibot": "^0.37.0"
   },
   "devDependencies": {
-    "@markuplint/jsx-parser": "^4.6.1",
-    "@markuplint/react-spec": "^4.4.1",
+    "@markuplint/jsx-parser": "^4.7.5",
+    "@markuplint/react-spec": "^4.5.5",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "14.2.2",
-    "markuplint": "^4.6.1",
+    "markuplint": "^4.9.2",
     "postcss": "^8",
     "prettier": "^3.3.0",
     "prettier-plugin-tailwindcss": "^0.6.1",
