@@ -3,6 +3,10 @@ import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
 
 export default defineConfig({
+  base:
+    process.env.NODE_ENV === "production"
+      ? "/tailwind-color-contrast-grid/"
+      : "/",
   plugins: [
     remix({
       ssr: false,
