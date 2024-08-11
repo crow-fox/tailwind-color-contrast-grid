@@ -13,7 +13,7 @@ export default defineConfig({
       },
       basename:
         process.env.NODE_ENV === "production"
-          ? "/tailwind-color-contrast-grid"
+          ? "/tailwind-color-contrast-grid/"
           : "/",
     }),
     tsconfigPaths(),
