@@ -59,5 +59,9 @@ export default function App() {
 }
 
 export function HydrateFallback() {
-  return <p>Loading...</p>;
+  return (
+    <div className="grid h-svh place-content-center">
+      <p className="font-mono text-2xl">Loading...</p>
+    </div>
+  );
 }
