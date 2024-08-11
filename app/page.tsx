@@ -15,7 +15,9 @@ export default function Home() {
       <Suspense fallback={<p>読み込み中...</p>}>
         <ColorController tailwindColors={tailwindColors} />
       </Suspense>
-      <ColorGridTable />
+      <Suspense>
+        <ColorGridTable />
+      </Suspense>
     </div>
   );
 }
