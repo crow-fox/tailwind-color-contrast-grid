@@ -1,4 +1,4 @@
-name: Deploy Next.js site to Pages
+name: Deploy Remix SPA site to Pages
 
 on:
   # Runs on pushes targeting the default branch
@@ -28,26 +28,14 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Set up Bun
-        uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-        with:
-          # Automatically inject basePath in your Next.js configuration file and disable
-          # server side image optimization (https://nextjs.org/docs/api-reference/next/image#unoptimized).
-          #
-          # You may remove this line if you want to manage the configuration yourself.
-          static_site_generator: next
       - name: Install dependencies
-        run: bun install
-      - name: Build with Next.js
-        run: bun run build
+        run: npm install pnpm -g && pnpm install
+      - name: Build with Remix SPA
+        run: pnpm run build
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out
+          path: ./build/client
 
   # Deployment job
   deploy:

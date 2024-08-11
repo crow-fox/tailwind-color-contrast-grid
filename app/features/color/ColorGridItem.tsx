@@ -1,18 +1,13 @@
-"use client";
-
-import {
-  ColorContrastLevel,
-  calculateColorContrast,
-} from "@/app/_features/color/contrast";
+import { ColorContrastLevel, calculateColorContrast } from "./contrast";
 import {
   TailwindColorGrade,
   TailwindGradedColorName,
   TailwindSingleColorName,
-} from "@/app/_features/color/tailwind.client";
-import { TailwindColors } from "@/app/_features/color/tailwind.server";
+} from "./tailwind.client";
+import { TailwindColors } from "./tailwind";
 
-import { useTailwindColorQuery } from "@/app/_features/color/useTailwindColorQuery";
-import { useClipboardCopy } from "@/app/_utils/useClipboardCopy";
+import { useTailwindColorQuery } from "./useTailwindColorQuery";
+import { useClipboardCopy } from "../../utils/useClipboardCopy";
 import { useCallback } from "react";
 
 type Props = {
@@ -50,9 +45,13 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
     await clipboardCopy(color.value);
   }, [color.value, clipboardCopy]);
 
-  const handleClickColor = useCallback(() => {
-    isCurrent ? resetCurrentColor({ scroll: false }) : selectColor(color);
-  }, [color, isCurrent, resetCurrentColor, selectColor]);
+  const handleClickColor = () => {
+    if (isCurrent) {
+      resetCurrentColor({ preventScrollReset: false });
+    } else {
+      selectColor(color);
+    }
+  };
 
   return (
     <div className="relative grid gap-y-2 p-2">

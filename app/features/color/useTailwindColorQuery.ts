@@ -3,9 +3,9 @@ import {
   TailwindGradedColorName,
   TailwindSingleColorName,
   findTailwindColor,
-} from "@/app/_features/color/tailwind.client";
-import { TailwindColors } from "@/app/_features/color/tailwind.server";
-import { useURLQueryParams } from "@/app/_utils/useURLQueryParams";
+} from "./tailwind.client";
+import { TailwindColors } from "./tailwind";
+import { useURLQueryParams } from "../../utils/useURLQueryParams";
 
 export function useTailwindColorQuery(tailwindColors: TailwindColors) {
   const { getQueryValue, deleteQueries, updateQueries } = useURLQueryParams<
@@ -23,7 +23,9 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
     tailwindColors,
   );
 
-  function resetCurrentColor(options: { scroll: boolean } = { scroll: true }) {
+  function resetCurrentColor(
+    options: { preventScrollReset: boolean } = { preventScrollReset: false },
+  ) {
     deleteQueries(["colorname", "colorgrade"], options);
   }
 
@@ -41,7 +43,7 @@ export function useTailwindColorQuery(tailwindColors: TailwindColors) {
         colorgrade: "grade" in color ? color.grade : undefined,
       },
       {
-        scroll: false,
+        preventScrollReset: true,
       },
     );
   }

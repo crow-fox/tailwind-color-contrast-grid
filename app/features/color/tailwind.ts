@@ -1,9 +1,6 @@
-import "server-only";
-
-import tailwindConfig from "@/tailwind.config";
 import resolveConfig from "tailwindcss/resolveConfig";
 import { DefaultColors } from "tailwindcss/types/generated/colors";
-import { getObjectKeys } from "@/app/_utils/object";
+import tailwindConfig from "../../../tailwind.config";
 
 export function getTailwindThemeColors() {
   const { theme } = resolveConfig(tailwindConfig);
@@ -45,6 +42,18 @@ export function getTailwindColors(colors: DefaultColors) {
 
 export type TailwindColors = ReturnType<typeof getTailwindColors>;
 
-export function getTailwindColorGrades(colors: DefaultColors) {
-  return getObjectKeys(colors.amber);
+export function getTailwindColorGrades() {
+  return [
+    "50",
+    "100",
+    "200",
+    "300",
+    "400",
+    "500",
+    "600",
+    "700",
+    "800",
+    "900",
+    "950",
+  ] as const;
 }

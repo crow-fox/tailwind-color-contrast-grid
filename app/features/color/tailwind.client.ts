@@ -1,5 +1,5 @@
-import { TailwindColors } from "@/app/_features/color/tailwind.server";
-import { getObjectKeys } from "@/app/_utils/object";
+import { TailwindColors } from "./tailwind";
+import { getObjectKeys } from "../../utils/object";
 import { InferOutput, literal, safeParse, union } from "valibot";
 
 function tailwindGradedColorNameSchemaFactory(tailwindColors: TailwindColors) {

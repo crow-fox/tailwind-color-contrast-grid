@@ -1,4 +1,4 @@
-import { Metadata } from "next";
+import { MetaFunction } from "@remix-run/react";
 
 const references = [
   {
@@ -15,8 +15,8 @@ const references = [
   },
 ] as const satisfies { title: string; href: string }[];
 
-export const metadata: Metadata = {
-  title: "参考サイト",
+export const meta: MetaFunction = () => {
+  return [{ title: "参考サイト | Tailwind Color Contrast Grid" }];
 };
 
 export default function ReferencePage() {
