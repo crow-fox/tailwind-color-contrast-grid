@@ -66,7 +66,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
               : currentColor.color.value,
         }}
       >
-        {currentColor.type !== "notFound" && "テキスト"}
+        {currentColor.type !== "notFound" && "Text"}
       </div>
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 text-sm/none">
         <button
@@ -88,7 +88,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
           {isCopied ? (
             <svg
               role="img"
-              aria-label="コピーしました"
+              aria-label="Copied"
               height="1em"
               viewBox="0 -960 960 960"
               width="1em"
@@ -99,7 +99,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
           ) : (
             <svg
               role="img"
-              aria-label="カラーコードコピー"
+              aria-label="Color code copy"
               height="1em"
               viewBox="0 -960 960 960"
               width="1em"
