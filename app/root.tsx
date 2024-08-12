@@ -9,6 +9,8 @@ import {
 import { Logo } from "./components/Logo";
 import "./globals.css";
 
+import "../i18n";
+
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="ja">
