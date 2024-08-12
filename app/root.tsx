@@ -11,6 +11,7 @@ import "./globals.css";
 
 import "../i18n";
 import { t } from "i18next";
+import { LanguageSwitcher } from "./features/color/LanguageSwitcher";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -42,6 +43,7 @@ export default function App() {
                 {t("Reference")}
               </Link>
             </p>
+            <LanguageSwitcher />
           </div>
         </div>
       </header>
