@@ -1,4 +1,6 @@
 import { MetaFunction } from "@remix-run/react";
+import { t } from "i18next";
+import { useTranslation } from "react-i18next";
 
 const references = [
   {
@@ -15,14 +17,15 @@ const references = [
   },
 ] as const satisfies { title: string; href: string }[];
 
-export const meta: MetaFunction = () => {
-  return [{ title: "参考サイト | Tailwind Color Contrast Grid" }];
-};
+export const meta: MetaFunction = () => [
+  { title: t("Reference") + " | Tailwind Color Contrast Grid" },
+];
 
 export default function ReferencePage() {
+  const { t } = useTranslation();
   return (
     <div className="grid gap-y-4">
-      <h1 className="text-lg font-bold">参考サイト</h1>
+      <h1 className="text-lg font-bold">{t("Reference_many")}</h1>
       <ul className="grid list-disc gap-y-2 pl-4">
         {references.map((reference) => (
           <li key={reference.href}>

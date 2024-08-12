@@ -10,6 +10,7 @@ import { Logo } from "./components/Logo";
 import "./globals.css";
 
 import "../i18n";
+import { t } from "i18next";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -38,7 +39,7 @@ export default function App() {
           <div className="flex flex-wrap items-center gap-4">
             <p>
               <Link to="/reference" className="underline underline-offset-2">
-                参考サイト
+                {t("Reference")}
               </Link>
             </p>
           </div>
