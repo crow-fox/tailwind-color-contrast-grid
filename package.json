@@ -9,7 +9,8 @@
     "lint": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "preview": "vite preview",
     "typecheck": "tsc",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "test": "pnpm exec playwright test"
   },
   "dependencies": {
     "@remix-run/node": "^2.11.1",
@@ -22,7 +23,9 @@
   "devDependencies": {
     "@markuplint/jsx-parser": "^4.7.5",
     "@markuplint/react-spec": "^4.5.5",
+    "@playwright/test": "^1.46.0",
     "@remix-run/dev": "^2.11.1",
+    "@types/node": "^22.2.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^8.0.1",
