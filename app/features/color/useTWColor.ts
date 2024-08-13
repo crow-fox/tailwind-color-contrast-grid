@@ -4,7 +4,10 @@ import {
   isTWHasGradeColorName,
   isTWSingleColorName,
   TWColor,
+  TWColorGrade,
+  TWHasGradeColorName,
   twHasGradeColorPaletteListMap,
+  TWSingleColorName,
   twSingleColorPaletteListMap,
 } from "./tw";
 
@@ -39,4 +42,43 @@ export function useTWSelectedColor(): TWColor | undefined {
   }
 
   return undefined;
+}
+
+export function useTWColorAction() {
+  const { updateQueries, deleteQueries } = useURLQueryParams<TWQuery>();
+
+  function resetSelectedColor(
+    options: { preventScrollReset: boolean } = { preventScrollReset: false },
+  ) {
+    deleteQueries(["colorname", "colorgrade"], {
+      preventScrollReset: options.preventScrollReset,
+    });
+  }
+
+  function selectColor(
+    newColor:
+      | {
+          name: TWHasGradeColorName;
+          grade: TWColorGrade;
+        }
+      | {
+          name: TWSingleColorName;
+        },
+    options: { preventScrollReset: boolean } = { preventScrollReset: false },
+  ) {
+    updateQueries(
+      {
+        colorname: newColor.name,
+        colorgrade: "grade" in newColor ? newColor.grade : undefined,
+      },
+      {
+        preventScrollReset: options.preventScrollReset,
+      },
+    );
+  }
+
+  return {
+    resetSelectedColor,
+    selectColor,
+  } as const;
 }
