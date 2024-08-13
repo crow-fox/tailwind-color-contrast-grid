@@ -9,21 +9,17 @@ export const Logo: FC = () => {
     <>
       {isTopPage ? (
         <h1>
-          <LogoLink />
+          <Link to="/" className="text-lg font-bold">
+            Tailwind Color Contrast Grid
+          </Link>
         </h1>
       ) : (
         <p>
-          <LogoLink />
+          <Link to="/" className="text-lg font-bold">
+            Tailwind Color Contrast Grid
+          </Link>
         </p>
       )}
     </>
-  );
-};
-
-const LogoLink: FC = () => {
-  return (
-    <Link to="/" className="text-lg font-bold">
-      Tailwind Color Contrast Grid
-    </Link>
   );
 };
