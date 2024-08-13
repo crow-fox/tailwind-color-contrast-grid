@@ -1,18 +1,18 @@
-import { ColorGridItem } from "./ColorGridItem";
-import {
-  getTailwindColorGrades,
-  getTailwindColors,
-  getTailwindThemeColors,
-} from "./tailwind";
-
-import { getObjectKeys } from "../../utils/object";
+import { FC } from "react";
 import { capitalizeFirstLetter } from "../../utils/string";
+import {
+  TWColor,
+  twColorGrades,
+  twHasGradeColorPaletteListMap,
+  twSingleColorPaletteListMap,
+} from "./tw";
+import { ColorGridItem } from "./ColorGridItem";
 
-export function ColorGridTable() {
-  const tailwindThemeColors = getTailwindThemeColors();
-  const tailwindColors = getTailwindColors(tailwindThemeColors);
-  const tailwindColorGrades = getTailwindColorGrades();
+type Props = {
+  selectedColor?: TWColor;
+};
 
+export const ColorGridTable: FC<Props> = (props) => {
   return (
     <div className="grid overflow-x-auto">
       <table className="relative w-full border-collapse">
@@ -22,7 +22,7 @@ export function ColorGridTable() {
               <p className="text-end text-xs">Grade</p>
               <p className="text-start text-xs">Color</p>
             </th>
-            {tailwindColorGrades.map((grade) => (
+            {twColorGrades.map((grade) => (
               <th
                 key={grade}
                 className="border border-gray-900 px-2 py-2 text-sm dark:border-gray-200"
@@ -33,43 +33,36 @@ export function ColorGridTable() {
           </tr>
         </thead>
         <tbody>
-          {getObjectKeys(tailwindColors.graded).map((name) => (
+          {Array.from(twHasGradeColorPaletteListMap).map(([name, palette]) => (
             <tr key={name}>
               <th className="border border-gray-900 px-2 py-2 text-sm dark:border-gray-200">
                 {capitalizeFirstLetter(name)}
               </th>
-              {getObjectKeys(tailwindColors.graded[name]).map((grade) => (
+              {Array.from(palette).map(([grade, value]) => (
                 <td
                   key={grade}
                   className="border border-gray-200 dark:border-gray-700"
                 >
                   <ColorGridItem
-                    color={{
-                      name,
-                      grade,
-                      value: tailwindColors.graded[name][grade],
-                    }}
-                    tailwindColors={tailwindColors}
+                    color={{ type: "graded", name, grade, value }}
+                    selectedColor={props.selectedColor}
                   />
                 </td>
               ))}
             </tr>
           ))}
-          {getObjectKeys(tailwindColors.single).map((name) => (
+          {Array.from(twSingleColorPaletteListMap).map(([name, value]) => (
             <tr key={name}>
               <th className="border border-gray-900 px-2 py-2 text-sm dark:border-gray-200">
                 {capitalizeFirstLetter(name)}
               </th>
               <td
-                colSpan={tailwindColorGrades.length}
+                colSpan={twColorGrades.length}
                 className="border border-gray-200 dark:border-gray-700"
               >
                 <ColorGridItem
-                  color={{
-                    name,
-                    value: tailwindColors.single[name],
-                  }}
-                  tailwindColors={tailwindColors}
+                  color={{ type: "single", name, value }}
+                  selectedColor={props.selectedColor}
                 />
               </td>
             </tr>
@@ -78,4 +71,4 @@ export function ColorGridTable() {
       </table>
     </div>
   );
-}
+};

@@ -1,57 +1,53 @@
-import { ColorContrastLevel, calculateColorContrast } from "./contrast";
-import {
-  TailwindColorGrade,
-  TailwindGradedColorName,
-  TailwindSingleColorName,
-} from "./tailwind.client";
-import { TailwindColors } from "./tailwind";
-
-import { useTailwindColorQuery } from "./useTailwindColorQuery";
+import { FC } from "react";
 import { useClipboardCopy } from "../../utils/useClipboardCopy";
-import { useCallback } from "react";
+import { ColorContrastLevel, calculateColorContrast } from "./contrast";
+import { TWColor } from "./tw";
+import { useTWColorAction } from "./useTWColor";
 
 type Props = {
-  color:
-    | {
-        name: TailwindGradedColorName;
-        grade: TailwindColorGrade;
-        value: string;
-      }
-    | {
-        name: TailwindSingleColorName;
-        value: string;
-      };
-  tailwindColors: TailwindColors;
+  color: TWColor;
+  selectedColor?: TWColor;
 };
 
-export function ColorGridItem({ color, tailwindColors }: Props) {
-  const { currentColor, selectColor, resetCurrentColor } =
-    useTailwindColorQuery(tailwindColors);
+export const ColorGridItem: FC<Props> = (props) => {
+  const { selectColor, resetSelectedColor } = useTWColorAction();
 
-  const contrastResult =
-    currentColor.type === "notFound"
-      ? undefined
-      : calculateColorContrast(currentColor.color.value, color.value);
+  const isSelected =
+    props.color.type === "graded"
+      ? props.selectedColor?.name === props.color.name &&
+        props.selectedColor?.grade === props.color.grade
+      : props.color.type === "single"
+        ? props.selectedColor?.name === props.color.name
+        : false;
 
-  // 同じカラーコードの異なる色名があるため、色名も比較する
-  const isCurrent =
-    currentColor.type !== "notFound" &&
-    currentColor.color.name === color.name &&
-    currentColor.color.value === color.value;
+  const contrastResult = props.selectedColor
+    ? calculateColorContrast(props.selectedColor.value, props.color.value)
+    : undefined;
+
+  const handleClick = () => {
+    if (isSelected) {
+      resetSelectedColor({ preventScrollReset: true });
+      return;
+    }
+    switch (props.color.type) {
+      case "graded":
+        selectColor(
+          { name: props.color.name, grade: props.color.grade },
+          { preventScrollReset: true },
+        );
+        return;
+      case "single":
+        selectColor({ name: props.color.name }, { preventScrollReset: true });
+        return;
+      default: {
+        const _: never = props.color;
+      }
+    }
+  };
 
   const { isCopied, clipboardCopy } = useClipboardCopy();
 
-  const handleCopy = useCallback(async () => {
-    await clipboardCopy(color.value);
-  }, [color.value, clipboardCopy]);
-
-  const handleClickColor = () => {
-    if (isCurrent) {
-      resetCurrentColor({ preventScrollReset: false });
-    } else {
-      selectColor(color);
-    }
-  };
+  const handleCopy = async () => await clipboardCopy(props.color.value);
 
   return (
     <div className="relative grid gap-y-2 p-2">
@@ -59,27 +55,24 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
         aria-hidden="true"
         className="grid h-10 w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800"
         style={{
-          backgroundColor: color.value,
-          color:
-            currentColor.type === "notFound"
-              ? undefined
-              : currentColor.color.value,
+          backgroundColor: props.color.value,
+          color: props.selectedColor ? props.selectedColor.value : undefined,
         }}
       >
-        {currentColor.type !== "notFound" && "テキスト"}
+        {props.selectedColor && "テキスト"}
       </div>
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 text-sm/none">
         <button
-          onClick={handleClickColor}
+          onClick={handleClick}
           className={[
             "text-sm/none after:absolute after:inset-0 after:block focus-visible:outline-none",
             "after:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:focus-visible:shadow-[inset_0_0_0_3px_theme(colors.gray[200])] after:dark:hover:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]",
-            isCurrent
+            isSelected
               ? "after:shadow-[inset_0_0_0_3px_theme(colors.gray[900])] after:dark:shadow-[inset_0_0_0_3px_theme(colors.gray[200])]"
               : "after:shadow-none",
           ].join(" ")}
         >
-          {color.value}
+          {props.color.value}
         </button>
         <button
           onClick={handleCopy}
@@ -125,7 +118,7 @@ export function ColorGridItem({ color, tailwindColors }: Props) {
       )}
     </div>
   );
-}
+};
 
 function getLevelClassNames(level: ColorContrastLevel) {
   switch (level) {
