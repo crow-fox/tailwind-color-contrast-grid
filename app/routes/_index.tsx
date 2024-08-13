@@ -1,23 +1,27 @@
 import type { MetaFunction } from "@remix-run/node";
-import { ColorController } from "../features/color/ColorController";
 import { ColorGridTable } from "../features/color/ColorGridTable";
-import {
-  getTailwindColors,
-  getTailwindThemeColors,
-} from "../features/color/tailwind";
+import { ColorResetButton } from "../features/color/ColorResetButton";
+import { useTWSelectedColor } from "../features/color/useTWColor";
 
 export const meta: MetaFunction = () => {
   return [{ title: "Tailwind Color Contrast Grid" }];
 };
 
 export default function Index() {
-  const tailwindThemeColors = getTailwindThemeColors();
-  const tailwindColors = getTailwindColors(tailwindThemeColors);
+  const selectedColor = useTWSelectedColor();
 
   return (
     <div className="grid gap-y-8">
-      <ColorController tailwindColors={tailwindColors} />
-      <ColorGridTable />
+      <div>
+        {selectedColor ? (
+          <p>
+            <ColorResetButton />
+          </p>
+        ) : (
+          <p>色を選択してください</p>
+        )}
+      </div>
+      <ColorGridTable selectedColor={selectedColor} />
     </div>
   );
 }
