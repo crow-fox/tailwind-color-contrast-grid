@@ -2,7 +2,7 @@
 
 TailwindCSS でデフォルトで設定されているカラーパレットのコントラスト比を計算するツールです。
 
-(Tailwind Color Contrast Grid)[https://tailwind-color-contrast-grid.vercel.app/]
+https://crow-fox.github.io/tailwind-color-contrast-grid/
 
 ## 開発環境
 
