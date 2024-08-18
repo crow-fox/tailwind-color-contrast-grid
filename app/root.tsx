@@ -8,6 +8,16 @@ import {
 } from "@remix-run/react";
 import { Logo } from "./components/Logo";
 import "./globals.css";
+import { LinksFunction } from "@remix-run/node";
+
+export const links: LinksFunction = () => {
+  return [
+    {
+      rel: "icon",
+      href: "/favicon.ico",
+    },
+  ];
+};
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
