@@ -14,7 +14,7 @@ export const links: LinksFunction = () => {
   return [
     {
       rel: "icon",
-      href: "/favicon.ico",
+      href: "favicon.ico",
     },
   ];
 };
