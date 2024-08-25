@@ -16,29 +16,20 @@ export function calculateColorContrast(
 
   const contrast = Math.floor(color1.contrastWCAG21(color2) * 10) / 10;
 
-  if (contrast >= 7) {
-    return {
-      level: "AAA",
-      ratio: contrast,
-    };
-  }
-
-  if (contrast >= 4.5) {
-    return {
-      level: "AA",
-      ratio: contrast,
-    };
-  }
-
-  if (contrast >= 3) {
-    return {
-      level: "AA18",
-      ratio: contrast,
-    };
-  }
+  const checkContrast = (contrast: number): ColorContrastLevel => {
+    if (contrast >= 7) {
+      return "AAA";
+    } else if (contrast >= 4.5) {
+      return "AA";
+    } else if (contrast >= 3) {
+      return "AA18";
+    } else {
+      return "DNP";
+    }
+  };
 
   return {
-    level: "DNP",
+    level: checkContrast(contrast),
     ratio: contrast,
   };
 }
