@@ -24,8 +24,8 @@ importers:
         specifier: ^18.3.1
         version: 18.3.1(react@18.3.1)
       valibot:
-        specifier: ^0.38.0
-        version: 0.38.0(typescript@5.5.4)
+        specifier: ^0.40.0
+        version: 0.40.0(typescript@5.5.4)
     devDependencies:
       '@markuplint/jsx-parser':
         specifier: ^4.7.5
@@ -3665,8 +3665,8 @@ packages:
     engines: {node: '>=8'}
     hasBin: true
 
-  valibot@0.38.0:
-    resolution: {integrity: sha512-RCJa0fetnzp+h+KN9BdgYOgtsMAG9bfoJ9JSjIhFHobKWVWyzM3jjaeNTdpFK9tQtf3q1sguXeERJ/LcmdFE7w==}
+  valibot@0.40.0:
+    resolution: {integrity: sha512-XHKnaVtwHqxPwnGOsLrwka9CEaL7yNeLNp707OKv/bmT29GnPVdl6PxBOZ6BW7hF66/6QT6iVbOlnW7qVPmoKw==}
     peerDependencies:
       typescript: '>=5'
     peerDependenciesMeta:
@@ -8097,7 +8097,7 @@ snapshots:
       kleur: 4.1.5
       sade: 1.8.1
 
-  valibot@0.38.0(typescript@5.5.4):
+  valibot@0.40.0(typescript@5.5.4):
     optionalDependencies:
       typescript: 5.5.4
 
