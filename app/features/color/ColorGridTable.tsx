@@ -1,12 +1,12 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { capitalizeFirstLetter } from "../../utils/string";
+import { ColorGridItem } from "./ColorGridItem";
 import {
-  TWColor,
+  type TWColor,
   twColorGrades,
   twHasGradeColorPaletteListMap,
   twSingleColorPaletteListMap,
 } from "./tw";
-import { ColorGridItem } from "./ColorGridItem";
 
 type Props = {
   selectedColor?: TWColor;

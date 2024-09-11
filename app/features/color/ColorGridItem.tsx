@@ -1,7 +1,7 @@
-import { FC } from "react";
+import type { FC } from "react";
 import { useClipboardCopy } from "../../utils/useClipboardCopy";
-import { ColorContrastLevel, calculateColorContrast } from "./contrast";
-import { TWColor } from "./tw";
+import { type ColorContrastLevel, calculateColorContrast } from "./contrast";
+import type { TWColor } from "./tw";
 import { useTWColorAction } from "./useTWColor";
 
 type Props = {
@@ -63,6 +63,7 @@ export const ColorGridItem: FC<Props> = (props) => {
       </div>
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 text-sm/none">
         <button
+          type="button"
           onClick={handleClick}
           className={[
             "text-sm/none after:absolute after:inset-0 after:block focus-visible:outline-none",
@@ -75,6 +76,7 @@ export const ColorGridItem: FC<Props> = (props) => {
           {props.color.value}
         </button>
         <button
+          type="button"
           onClick={handleCopy}
           className="isolate inline-grid size-6 place-content-center rounded-lg border border-gray-900 bg-white text-sm/none dark:border-gray-200 dark:bg-gray-950"
         >

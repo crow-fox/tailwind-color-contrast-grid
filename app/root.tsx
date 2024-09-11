@@ -1,3 +1,4 @@
+import type { LinksFunction } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -8,7 +9,6 @@ import {
 } from "@remix-run/react";
 import { Logo } from "./components/Logo";
 import "./globals.css";
-import { LinksFunction } from "@remix-run/node";
 
 export const links: LinksFunction = () => {
   return [
