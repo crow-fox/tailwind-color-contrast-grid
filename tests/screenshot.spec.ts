@@ -1,6 +1,6 @@
 import test, { expect } from "@playwright/test";
 
-test(`screenshot[/]`, async ({ page }) => {
+test("screenshot[/]", async ({ page }) => {
   await page.goto("/");
 
   // ページの読み込みを待つ
@@ -16,7 +16,7 @@ test(`screenshot[/]`, async ({ page }) => {
   await expect(page).toHaveScreenshot({ fullPage: true });
 });
 
-test(`screenshot[reference]`, async ({ page }) => {
+test("screenshot[reference]", async ({ page }) => {
   await page.goto("reference");
 
   await page.getByRole("heading", {

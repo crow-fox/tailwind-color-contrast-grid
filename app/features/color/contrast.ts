@@ -10,13 +10,14 @@ type ContrastResult = {
 function checkContrastLevel(contrast: number): ColorContrastLevel {
   if (contrast >= 7) {
     return "AAA";
-  } else if (contrast >= 4.5) {
-    return "AA";
-  } else if (contrast >= 3) {
-    return "AA18";
-  } else {
-    return "DNP";
   }
+  if (contrast >= 4.5) {
+    return "AA";
+  }
+  if (contrast >= 3) {
+    return "AA18";
+  }
+  return "DNP";
 }
 
 export function calculateColorContrast(

@@ -1,8 +1,8 @@
+import { copyFileSync } from "node:fs";
+import { join } from "node:path";
 import { vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
-import { copyFileSync } from "fs";
-import { join } from "path";
 
 export default defineConfig({
   base:

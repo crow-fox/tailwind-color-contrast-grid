@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@remix-run/react";
-import { FC } from "react";
+import type { FC } from "react";
 
 export const Logo: FC = () => {
   const location = useLocation();

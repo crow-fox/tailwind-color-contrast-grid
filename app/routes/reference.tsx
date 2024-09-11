@@ -1,4 +1,4 @@
-import { MetaFunction } from "@remix-run/react";
+import type { MetaFunction } from "@remix-run/react";
 
 const references = [
   {

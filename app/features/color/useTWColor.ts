@@ -1,13 +1,13 @@
 import { useURLQueryParams } from "../../utils/useURLQueryParams";
 import {
+  type TWColor,
+  type TWColorGrade,
+  type TWHasGradeColorName,
+  type TWSingleColorName,
   isTWColorGrade,
   isTWHasGradeColorName,
   isTWSingleColorName,
-  TWColor,
-  TWColorGrade,
-  TWHasGradeColorName,
   twHasGradeColorPaletteListMap,
-  TWSingleColorName,
   twSingleColorPaletteListMap,
 } from "./tw";
 
