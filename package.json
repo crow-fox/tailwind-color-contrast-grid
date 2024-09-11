@@ -6,12 +6,12 @@
   "scripts": {
     "build": "remix vite:build",
     "dev": "remix vite:dev",
-    "lint:es": "eslint --ignore-path .gitignore --cache --cache-location ./node_modules/.cache/eslint .",
     "lint:markup": "markuplint 'app/**/*.tsx'",
-    "lint": "pnpm run lint:es && pnpm run lint:markup",
     "preview": "vite preview",
     "typecheck": "tsc",
-    "format": "prettier --write .",
+    "format": "biome format --write ./",
+    "lint": "biome lint ./",
+    "check": "biome check ./",
     "test": "pnpm exec playwright test"
   },
   "dependencies": {
