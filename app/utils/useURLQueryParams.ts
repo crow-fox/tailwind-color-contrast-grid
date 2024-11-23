@@ -1,4 +1,4 @@
-import { useSearchParams } from "@remix-run/react";
+import { useSearchParams } from "react-router";
 
 type Queries<T extends string> = Record<T, string | undefined>;
 

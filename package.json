@@ -4,23 +4,23 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "remix vite:build",
-    "dev": "remix vite:dev",
+    "build": "react-router build",
+    "dev": "react-router dev",
     "lint:markup": "markuplint 'app/**/*.tsx'",
     "preview": "vite preview",
-    "typecheck": "tsc",
+    "typecheck": "react-router typegen && tsc",
     "format": "biome format --write ./",
     "lint": "biome lint ./",
     "check": "biome check ./",
     "test": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@remix-run/node": "^2.13.1",
-    "@remix-run/react": "^2.13.1",
+    "@react-router/node": "^7.0.0",
     "colorjs.io": "^0.5.2",
     "isbot": "^5.1.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router": "^7.0.0",
     "valibot": "1.0.0-beta.0"
   },
   "devDependencies": {
@@ -28,7 +28,7 @@
     "@markuplint/jsx-parser": "^4.7.6",
     "@markuplint/react-spec": "^4.5.6",
     "@playwright/test": "^1.46.0",
-    "@remix-run/dev": "^2.13.1",
+    "@react-router/dev": "^7.0.0",
     "@types/node": "^22.2.0",
     "@types/react": "^18.2.20",
     "@types/react-dom": "^18.2.7",
