@@ -1,9 +1,9 @@
-import type { MetaFunction } from "@remix-run/node";
+import type { Route } from "../+types/root";
 import { ColorGridTable } from "../features/color/ColorGridTable";
 import { ColorResetButton } from "../features/color/ColorResetButton";
 import { useTWSelectedColor } from "../features/color/useTWColor";
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
   return [{ title: "Tailwind Color Contrast Grid" }];
 };
 
