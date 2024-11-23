@@ -1,6 +1,6 @@
-import type { Config } from "@react-router/dev/config";
 import { copyFileSync } from "node:fs";
 import { join } from "node:path";
+import type { Config } from "@react-router/dev/config";
 import { BASE_PATH } from "./vite.config";
 
 export default {
