@@ -15,29 +15,29 @@
     "test": "pnpm exec playwright test"
   },
   "dependencies": {
-    "@react-router/node": "^7.0.0",
+    "@react-router/node": "^7.0.1",
     "colorjs.io": "^0.5.2",
     "isbot": "^5.1.17",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router": "^7.0.0",
+    "react-router": "^7.0.1",
     "valibot": "1.0.0-beta.0"
   },
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
-    "@markuplint/jsx-parser": "^4.7.6",
-    "@markuplint/react-spec": "^4.5.6",
+    "@markuplint/jsx-parser": "^4.7.13",
+    "@markuplint/react-spec": "^4.5.13",
     "@playwright/test": "^1.49.0",
-    "@react-router/dev": "^7.0.0",
-    "@types/node": "^22.2.0",
-    "@types/react": "^18.2.20",
-    "@types/react-dom": "^18.2.7",
-    "autoprefixer": "^10.4.19",
-    "markuplint": "^4.9.3",
-    "postcss": "^8.4.44",
-    "tailwindcss": "^3.4.10",
-    "typescript": "^5.5.4",
-    "vite": "^5.1.0"
+    "@react-router/dev": "^7.0.1",
+    "@types/node": "^22.9.3",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "markuplint": "^4.11.3",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "typescript": "^5.7.2",
+    "vite": "^5.4.11"
   },
   "engines": {
     "node": ">=20.0.0"
