@@ -1,4 +1,3 @@
-import type { LinksFunction } from "@remix-run/node";
 import {
   Link,
   Links,
@@ -6,11 +5,12 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
-} from "@remix-run/react";
+} from "react-router";
+import type { Route } from "./+types/root";
 import { Logo } from "./components/Logo";
 import "./globals.css";
 
-export const links: LinksFunction = () => {
+export const links: Route.LinksFunction = () => {
   return [
     {
       rel: "icon",

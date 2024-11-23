@@ -1,4 +1,4 @@
-import type { MetaFunction } from "@remix-run/react";
+import type { Route } from "../+types/root";
 
 const references = [
   {
@@ -15,7 +15,7 @@ const references = [
   },
 ] as const satisfies { title: string; href: string }[];
 
-export const meta: MetaFunction = () => {
+export const meta: Route.MetaFunction = () => {
   return [{ title: "参考サイト | Tailwind Color Contrast Grid" }];
 };
 
