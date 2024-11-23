@@ -1,5 +1,5 @@
-import { Link, useLocation } from "react-router";
 import type { FC } from "react";
+import { Link, useLocation } from "react-router";
 
 export const Logo: FC = () => {
   const location = useLocation();
