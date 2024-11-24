@@ -12,7 +12,7 @@ type Props = {
   selectedColor?: TWColor;
 };
 
-export const ColorGridTable: FC<Props> = (props) => {
+export const ColorGridTable: FC<Props> = ({ selectedColor }) => {
   return (
     <div className="grid overflow-x-auto">
       <table className="relative w-full border-collapse">
@@ -39,13 +39,10 @@ export const ColorGridTable: FC<Props> = (props) => {
                 {capitalizeFirstLetter(name)}
               </th>
               {Array.from(palette).map(([grade, value]) => (
-                <td
-                  key={grade}
-                  className="border border-gray-200 dark:border-gray-700"
-                >
+                <td key={grade} className="border border-gray-200 dark:border-gray-700">
                   <ColorGridItem
                     color={{ type: "graded", name, grade, value }}
-                    selectedColor={props.selectedColor}
+                    selectedColor={selectedColor}
                   />
                 </td>
               ))}
@@ -62,7 +59,7 @@ export const ColorGridTable: FC<Props> = (props) => {
               >
                 <ColorGridItem
                   color={{ type: "single", name, value }}
-                  selectedColor={props.selectedColor}
+                  selectedColor={selectedColor}
                 />
               </td>
             </tr>
