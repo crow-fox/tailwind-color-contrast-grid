@@ -9,19 +9,18 @@ type Props = {
   selectedColor?: TWColor;
 };
 
-export const ColorGridItem: FC<Props> = (props) => {
+export const ColorGridItem: FC<Props> = ({ color, selectedColor }) => {
   const { selectColor, resetSelectedColor } = useTWColorAction();
 
   const isSelected =
-    props.color.type === "graded"
-      ? props.selectedColor?.name === props.color.name &&
-        props.selectedColor?.grade === props.color.grade
-      : props.color.type === "single"
-        ? props.selectedColor?.name === props.color.name
+    color.type === "graded"
+      ? selectedColor?.name === color.name && selectedColor?.grade === color.grade
+      : color.type === "single"
+        ? selectedColor?.name === color.name
         : false;
 
-  const contrastResult = props.selectedColor
-    ? calculateColorContrast(props.selectedColor.value, props.color.value)
+  const contrastResult = selectedColor
+    ? calculateColorContrast(selectedColor.value, color.value)
     : undefined;
 
   const handleClick = () => {
@@ -29,25 +28,22 @@ export const ColorGridItem: FC<Props> = (props) => {
       resetSelectedColor({ preventScrollReset: true });
       return;
     }
-    switch (props.color.type) {
+    switch (color.type) {
       case "graded":
-        selectColor(
-          { name: props.color.name, grade: props.color.grade },
-          { preventScrollReset: true },
-        );
+        selectColor({ name: color.name, grade: color.grade }, { preventScrollReset: true });
         return;
       case "single":
-        selectColor({ name: props.color.name }, { preventScrollReset: true });
+        selectColor({ name: color.name }, { preventScrollReset: true });
         return;
       default: {
-        const _: never = props.color;
+        const _: never = color;
       }
     }
   };
 
   const { isCopied, clipboardCopy } = useClipboardCopy();
 
-  const handleCopy = async () => await clipboardCopy(props.color.value);
+  const handleCopy = async () => await clipboardCopy(color.value);
 
   return (
     <div className="relative grid gap-y-2 p-2">
@@ -55,11 +51,11 @@ export const ColorGridItem: FC<Props> = (props) => {
         aria-hidden="true"
         className="grid h-10 w-full min-w-20 place-content-center rounded-md border border-gray-100 text-xs/none dark:border-gray-800"
         style={{
-          backgroundColor: props.color.value,
-          color: props.selectedColor ? props.selectedColor.value : undefined,
+          backgroundColor: color.value,
+          color: selectedColor ? selectedColor.value : undefined,
         }}
       >
-        {props.selectedColor && "テキスト"}
+        {selectedColor && "テキスト"}
       </div>
       <div className="grid grid-cols-[auto_1fr] items-center gap-x-1 text-sm/none">
         <button
@@ -73,7 +69,7 @@ export const ColorGridItem: FC<Props> = (props) => {
               : "after:shadow-none",
           ].join(" ")}
         >
-          {props.color.value}
+          {color.value}
         </button>
         <button
           type="button"
