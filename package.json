@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "cross-env NODE_ENV=production react-router build",
     "dev": "react-router dev",
     "lint:markup": "markuplint 'app/**/*.tsx'",
     "preview": "vite preview",
@@ -33,6 +33,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "autoprefixer": "^10.4.20",
+    "cross-env": "^7.0.3",
     "markuplint": "^4.11.3",
     "postcss": "^8.4.49",
     "tailwindcss": "^3.4.15",
