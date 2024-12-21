@@ -29,6 +29,9 @@ importers:
       valibot:
         specifier: 1.0.0-beta.9
         version: 1.0.0-beta.9(typescript@5.7.2)
+      vite-plugin-babel:
+        specifier: ^1.3.0
+        version: 1.3.0(@babel/core@7.26.0)(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.6)(yaml@2.6.1))
     devDependencies:
       '@biomejs/biome':
         specifier: 1.9.4
@@ -57,6 +60,9 @@ importers:
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.49)
+      babel-plugin-react-compiler:
+        specifier: 19.0.0-beta-201e55d-20241215
+        version: 19.0.0-beta-201e55d-20241215
       cross-env:
         specifier: ^7.0.3
         version: 7.0.3
@@ -891,6 +897,9 @@ packages:
 
   babel-dead-code-elimination@1.0.6:
     resolution: {integrity: sha512-JxFi9qyRJpN0LjEbbjbN8g0ux71Qppn9R8Qe3k6QzHg2CaKsbUQtbn307LQGiDLGjV6JCtEFqfxzVig9MyDCHQ==}
+
+  babel-plugin-react-compiler@19.0.0-beta-201e55d-20241215:
+    resolution: {integrity: sha512-c7YAJNlA8kSoIFx2Buq/CeGmC3MbZYznD3H7Q3cdaRyKtwDSSxbM3VJxEhv7lEo64g48aWSBSiCI3XcRw0y/Jw==}
 
   balanced-match@1.0.2:
     resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
@@ -1937,6 +1946,12 @@ packages:
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
     hasBin: true
 
+  vite-plugin-babel@1.3.0:
+    resolution: {integrity: sha512-C5WKX0UwvQKH8WD2GiyWUjI62UBfLbfUhiLexnIm4asLdENX5ymrRipFlBnGeVxoOaYgTL5dh5KW6YDGpWsR8A==}
+    peerDependencies:
+      '@babel/core': ^7.0.0
+      vite: ^2.7.0 || ^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0
+
   vite@5.4.11:
     resolution: {integrity: sha512-c7jFQRklXua0mTzneGW9QVyxFjUgwcihC4bXEtujIo2ouWCe1Ajt/amn2PCxYnhYfd5k09JX3SB7OYWFKYqj8Q==}
     engines: {node: ^18.0.0 || >=20.0.0}
@@ -2884,6 +2899,10 @@ snapshots:
       '@babel/types': 7.26.3
     transitivePeerDependencies:
       - supports-color
+
+  babel-plugin-react-compiler@19.0.0-beta-201e55d-20241215:
+    dependencies:
+      '@babel/types': 7.26.3
 
   balanced-match@1.0.2: {}
 
@@ -3956,6 +3975,11 @@ snapshots:
       - sugarss
       - supports-color
       - terser
+
+  vite-plugin-babel@1.3.0(@babel/core@7.26.0)(vite@6.0.5(@types/node@22.10.2)(jiti@1.21.6)(yaml@2.6.1)):
+    dependencies:
+      '@babel/core': 7.26.0
+      vite: 6.0.5(@types/node@22.10.2)(jiti@1.21.6)(yaml@2.6.1)
 
   vite@5.4.11(@types/node@22.10.2):
     dependencies:
