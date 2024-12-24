@@ -28,7 +28,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className="bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-200">
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -39,7 +39,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
 
 export default function App() {
   return (
-    <div className="flex min-h-svh flex-col bg-white font-mono text-gray-900 dark:bg-gray-950 dark:text-gray-200">
+    <div className="flex min-h-svh flex-col font-mono ">
       <header className="grid grid-cols-[minmax(1rem,1fr)_minmax(0,80rem)_minmax(1rem,1fr)] border-b border-gray-200 py-4 dark:border-gray-700">
         <div className="flex flex-wrap items-center justify-between gap-4 [grid-column:2]">
           <Logo />
