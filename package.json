@@ -4,7 +4,7 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "build": "cross-env NODE_ENV=production react-router build",
+    "build": "react-router build",
     "dev": "react-router dev",
     "lint:markup": "markuplint 'app/**/*.tsx'",
     "preview": "vite preview",
