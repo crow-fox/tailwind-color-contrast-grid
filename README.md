@@ -1,5 +1,7 @@
 # Tailwind Color Contrast Grid
 
+TailwindCSS v4 がリリースされたので一旦 Close しました。
+
 TailwindCSS でデフォルトで設定されているカラーパレットのコントラスト比を計算するツールです。
 
 https://crow-fox.github.io/tailwind-color-contrast-grid/
